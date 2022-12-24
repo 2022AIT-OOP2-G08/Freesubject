@@ -1,0 +1,41 @@
+html{
+    height: 100%;
+}
+
+body{
+    height: 100%;
+}
+
+.puzzle{
+    height: 100%;
+}
+
+.puzzle-dis{
+    display: flex;
+    justify-content: space-around; 
+}
+
+.puzzle-dis1{
+    flex-grow: 2;
+}
+
+.puzzle-dis2{
+    background-color: whitesmoke;
+    flex-grow: 1;
+}
+.puzzle-dis2-sub1{
+    text-align: right;
+    margin: 10px;
+}
+.puzzle-dis2-sub2{
+    text-align: center;
+}
+.complete-image{
+    width: 300px;
+    height: 400px;
+}
+
+.puzzle-pos{
+    height: 50%;
+    background-color: beige;;
+}
