@@ -1,7 +1,6 @@
 from xml.etree.ElementPath import get_parent_map
 import cv2
 import numpy as np
-import os
 from opedir import get_current_path , get_parent_path
 
 
@@ -20,7 +19,7 @@ def split_img(input,rows,cols):
     for row_img in np.array_split(img, rows, axis=0):
         for chunk in np.array_split(row_img, cols, axis=1):
             chunks.append(chunk)
-    print(len(chunks))
+    #print(len(chunks))
     output_img = get_parent_path() + '/static/images/split/'
     for i, chunk in enumerate(chunks):
         cv2.imwrite(output_img+f"chunk_{i:02d}.png",chunk)
@@ -35,7 +34,7 @@ if __name__ == "__main__":
     #print(get_current_path())
     #print(get_parent_path())
 
-    rows=6
-    cols=6
-    split_img(images,6,6)
+    rows=3
+    cols=4
+    split_img(images,rows,cols)
     
