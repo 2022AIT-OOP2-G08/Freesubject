@@ -1,4 +1,3 @@
-from xml.etree.ElementPath import get_parent_map
 import cv2
 import numpy as np
 import os
