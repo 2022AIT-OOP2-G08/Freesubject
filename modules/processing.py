@@ -9,11 +9,11 @@ def show_cur_pare_path():
     name = os.path.normpath(os.path.join(base, '..'))
     print(base)
     print(name)
-#カレントディレクトリを取得
+#カレントディレクトリの絶対パスを取得
 def get_current_path():
     base = os.path.dirname(os.path.abspath(__file__))
     return base
-#親ディレクトリ(一つ上のディレクトリ)を取得
+#親ディレクトリ(一つ上のディレクトリ)の絶対パスを取得(module内の関数ならFreeSubjectまでのパスを取得)
 def get_parent_path():
     base = get_current_path()
     name = os.path.normpath(os.path.join(base, '..'))
