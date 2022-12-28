@@ -1,5 +1,13 @@
+from xml.etree.ElementPath import get_parent_map
 import cv2
 import numpy as np
+import os
+
+from opedir import get_current_path , get_parent_path
+
+
+
+
 
 
 #画像の読み込み
@@ -19,9 +27,13 @@ def split_img(input_img, output_img,rows,cols):
 
 #debug用コード
 if __name__ == "__main__":
-    input = '/Users/k21013/Oop/Oop2/final/Freesubject/static/images/process/sample.png'
-    output = '/Users/k21013/Oop/Oop2/final/Freesubject/static/images/split/'
+    input = './static/images/process/sample.png'
+    output = './static/images/split/'
+    images = 'sample.png'
+    print(get_current_path())
+    print(get_parent_path())
+
     rows=6
     cols=6
-    split_img(input,output,6,6)
+    #split_img(input,output,6,6)
     
