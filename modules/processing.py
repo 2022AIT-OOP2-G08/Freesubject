@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 import os
 
-
+#ファイル内でのディレクトリ構造の統一のためにカレントディレクトリと親ディレクトリの位置を取得する関数を導入
 def show_cur_pare_path():
     base = os.path.dirname(os.path.abspath(__file__))
     name = os.path.normpath(os.path.join(base, '..'))
