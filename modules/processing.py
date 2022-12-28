@@ -1,16 +1,28 @@
 from xml.etree.ElementPath import get_parent_map
 import cv2
 import numpy as np
-from opedir import get_current_path , get_parent_path
+import os
+
+
+def show_cur_pare_path():
+    base = os.path.dirname(os.path.abspath(__file__))
+    name = os.path.normpath(os.path.join(base, '..'))
+    print(base)
+    print(name)
+#カレントディレクトリを取得
+def get_current_path():
+    base = os.path.dirname(os.path.abspath(__file__))
+    return base
+#親ディレクトリ(一つ上のディレクトリ)を取得
+def get_parent_path():
+    base = get_current_path()
+    name = os.path.normpath(os.path.join(base, '..'))
+    return name
 
 
 
 
-
-
-#画像の読み込み
-#photo=cv2.imread('sample.jpg',cv2.IMREAD_COLOR)
-
+#分割処理
 def split_img(input,rows,cols):
     input_img = get_parent_path()+'/static/images/process/'+input
     #print(input_img)
