@@ -28,8 +28,7 @@ def split_img(input,rows,cols):
 
 #debug用コード
 if __name__ == "__main__":
-    input = './static/images/process/sample.png'
-    output = './static/images/split/'
+    
     images = 'sample.png'
     #print(get_current_path())
     #print(get_parent_path())
