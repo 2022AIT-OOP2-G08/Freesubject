@@ -1,3 +1,4 @@
+import imp
 import time
 import cv2
 import numpy as np
@@ -19,10 +20,17 @@ def get_parent_path():
     name = os.path.normpath(os.path.join(base, '..'))
     return name
 
+#images のパスを取得
+def get_images_path():
+    name = get_parent_path()+'/static/images/'
+    return name
+
 #split のパスを取得
 def get_split_path():
     name = get_parent_path()+'/static/images/split/'
     return name
+
+
 
 
 
@@ -48,7 +56,7 @@ def del_split(rows,cols):
         #splitpath+f"chunk_{i:02d}.png"
         os.remove(splitpath+f"chunk_{i:02d}.png")
 
-    
+
 
     
 
