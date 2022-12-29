@@ -26,15 +26,15 @@ def get_images_path():
     return name
 
 #images内 のパスを取得
-def get_split_path():
-    name = get_images_path()+'split/'
+def get_img_select_path(imgtype):
+    name = get_images_path()+imgtype+'/'
     return name
 
 
 #分割処理
 def split_img(input,rows,cols):
     ext = input.split('.')[1]
-    input_img = get_parent_path()+'/static/images/process/'+input
+    input_img = get_img_select_path('process')+input
     #print(input_img)
     img=cv2.imread(input_img)
     chunks = []
@@ -42,13 +42,13 @@ def split_img(input,rows,cols):
         for chunk in np.array_split(row_img, cols, axis=1):
             chunks.append(chunk)
     #print(len(chunks))
-    output_img = get_split_path()
+    output_img = get_img_select_path('split')
     for i, chunk in enumerate(chunks):
         cv2.imwrite(output_img+f"chunk_{i:02d}."+ext,chunk)
 
 #split内の分割画像を削除
 def del_split():
-    dir = get_split_path()
+    dir = get_img_select_path('split')
     for f in os.listdir(dir):
         if os.path.isfile(os.path.join(dir,f)):
             os.remove(os.path.join(dir,f))
