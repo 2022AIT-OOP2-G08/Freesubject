@@ -18,6 +18,11 @@ def get_parent_path():
     name = os.path.normpath(os.path.join(base, '..'))
     return name
 
+#split のパスを取得
+def get_split_path():
+    name = get_parent_path()+'/static/images/split/'
+    return name
+
 
 
 
@@ -31,9 +36,14 @@ def split_img(input,rows,cols):
         for chunk in np.array_split(row_img, cols, axis=1):
             chunks.append(chunk)
     #print(len(chunks))
-    output_img = get_parent_path() + '/static/images/split/'
+    output_img = get_split_path()
     for i, chunk in enumerate(chunks):
         cv2.imwrite(output_img+f"chunk_{i:02d}.png",chunk)
+
+
+def del_split(rows,cols):
+    chunks = []
+
     
 
 
