@@ -31,10 +31,6 @@ def get_split_path():
     return name
 
 
-
-
-
-
 #分割処理
 def split_img(input,rows,cols):
     ext = input.split('.')[1]
