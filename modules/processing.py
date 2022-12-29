@@ -1,3 +1,4 @@
+import time
 import cv2
 import numpy as np
 import os
@@ -42,7 +43,12 @@ def split_img(input,rows,cols):
 
 
 def del_split(rows,cols):
-    chunks = []
+    splitpath = get_split_path()
+    for i in range(rows*cols):
+        #splitpath+f"chunk_{i:02d}.png"
+        os.remove(splitpath+f"chunk_{i:02d}.png")
+
+    
 
     
 
@@ -57,4 +63,6 @@ if __name__ == "__main__":
     rows=3
     cols=4
     split_img(images,rows,cols)
-    
+    #5秒後にディレクトリ内の分割画像を削除する
+    time.sleep(5)
+    del_split(rows,cols)
