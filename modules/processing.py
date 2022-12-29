@@ -25,9 +25,9 @@ def get_images_path():
     name = get_parent_path()+'/static/images/'
     return name
 
-#split のパスを取得
+#images内 のパスを取得
 def get_split_path():
-    name = get_parent_path()+'/static/images/split/'
+    name = get_images_path()+'split/'
     return name
 
 
