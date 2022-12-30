@@ -30,6 +30,8 @@ def get_img_select_path(imgtype):
     name = get_images_path()+imgtype+'/'
     return name
 
+####
+
 
 #分割処理
 def split_img(input,rows,cols):
@@ -72,5 +74,5 @@ if __name__ == "__main__":
     cols=4
     split_img(image1,rows,cols)
     #5秒後にディレクトリ内の分割画像を削除する
-    time.sleep(5)
+    time.sleep(15)
     del_split()
