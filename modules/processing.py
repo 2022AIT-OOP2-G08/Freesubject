@@ -33,7 +33,7 @@ def get_img_select_path(imgtype):
 
 #分割処理
 def split_img(input,rows,cols):
-    ext = input.split('.')[1]
+    root,ext = os.path.splitext(input)
     input_img = get_img_select_path('process')+input
     #print(input_img)
     img=cv2.imread(input_img)
@@ -44,7 +44,7 @@ def split_img(input,rows,cols):
     #print(len(chunks))
     output_img = get_img_select_path('split')
     for i, chunk in enumerate(chunks):
-        cv2.imwrite(output_img+f"chunk_{i:02d}."+ext,chunk)
+        cv2.imwrite(output_img+f"chunk_{i:02d}"+ext,chunk)
 
 #split内の分割画像を削除
 def del_split():
@@ -70,7 +70,7 @@ if __name__ == "__main__":
 
     rows=3
     cols=4
-    split_img(image2,rows,cols)
+    split_img(image1,rows,cols)
     #5秒後にディレクトリ内の分割画像を削除する
     time.sleep(5)
     del_split()
