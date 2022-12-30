@@ -66,8 +66,6 @@ if __name__ == "__main__":
     image2 = 'input1.jpg'
     #print(get_current_path())
     #print(get_parent_path())
-    
-    
 
     rows=3
     cols=4
