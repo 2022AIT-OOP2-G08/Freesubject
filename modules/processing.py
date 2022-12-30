@@ -1,6 +1,5 @@
 import time
 import cv2
-from cv2 import split
 import numpy as np
 import os
 
