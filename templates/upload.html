@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>アップロードページ</title>
+</head>
+<body>
+    <h1>アップロード</h1>
+    <form action="{{url_for('upload')}}" method="POST" enctype="multipart/form-data">
+        <input type="file" name="image_file">
+        <input type="submit" value="アップロード">
+    </form>
+
+</body>
+</html>
