@@ -1,7 +1,3 @@
-
-size = ['3*3','4*4','5*5']
-size_amp = [9,16,25]
-mode_amp = [2,4]
 score_h = []
 
 #サイズ倍率、モード倍率、時間倍率から計算
@@ -23,9 +19,9 @@ def juni(score):
     m = []
     for i in range(n):
         sample = score[i]
-        if sample < pivot:
+        if sample > pivot:
             l.append(sample)
-        elif sample > pivot:
+        elif sample < pivot:
             r.append(sample)
         else:
             m.append(sample)

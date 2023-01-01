@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 
 #ファイルダイアログの表示と画像のアップロード
-@app.route('/upload', methods=['GET', 'POST'])
+@app.route('/upload', methods=['GET', 'POST'])#画面3
 def upload():
     # URLでhttp://127.0.0.1:5000/uploadを指定したときはGETリクエストとなるのでこっち
     if request.method == 'GET':
@@ -17,6 +17,10 @@ def upload():
         filename = file.filename
         file.save(os.path.join('static/images/normal', filename))
         return redirect(url_for('upload'))#再ロード
+
+@app.route('/game')
+def timer():
+
 
 if __name__ == '__main__':
     app.run(debug=True)
