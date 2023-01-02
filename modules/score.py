@@ -1,24 +1,25 @@
 import csv
-score_h = []
 
-def init():
-    with open("././static/score.csv", "r", encoding="utf-8") as csv_file:
-        #リスト形式
-        f = csv.reader(csv_file, delimiter=",", doublequote=True, lineterminator="\r\n", quotechar='"', skipinitialspace=True)
-        
-        for row in f:
-            score_h.append(row)
-
+def read_csv():
+    with open("././static/score.csv", "r", encoding="utf-8") as f:
+        reader = csv.reader(f)
+        for row in reader:
+            score_h = row
     return score_h
 
-
+def write_csv(score_h):
+    with open('././static/score.csv', 'w', encoding="utf-8") as f:
+        writer = csv.writer(f)
+        writer.writerow(score_h)
 
 #サイズ倍率、モード倍率、時間倍率から計算
-def score(size_amp: int, mode_amp: int, time: int):
-    init()
+def calc_score(size_amp: int, mode_amp: int, time: int):
+    score_h = read_csv()
     total = 100
     total = total * size_amp * mode_amp
     score = total - time
+    score_h.append(score)
+    write_csv(score_h)#score.csvに上書き
     return score
 
 #順位付け(降順で並び替え)
@@ -45,15 +46,12 @@ def juni(score):
         r = juni(r)
     return l + m + r
     
-def show():
-    pass
     
 if __name__ == '__main__':
-    #print(init())
-    score(9,4,123)
-    score(9,2,323)
-    score(16,4,500)
+    print(read_csv())
+    #calc_score(9,4,123)
+    #calc_score(9,2,323)
+    #calc_score(16,4,500)
     
     
-
     
