@@ -1,57 +1,42 @@
 import csv
 
-def read_csv():
+def read_csv():#score_hをリスト型で返す
+    score_h = []
     with open("././static/score.csv", "r", encoding="utf-8") as f:
         reader = csv.reader(f)
-        for row in reader:
-            score_h = row
+        list = reader.__next__() #ヘッダーの読み込み
+    for i in list:
+        score_h.append(int(i))
     return score_h
 
-def write_csv(score_h):
+def write_csv(score):#リスト型のscore_hをcsvに書き込み
+    score_h = juni(score)
+    if len(score_h) > 5:#score_hが5より大きいとき残りを削除
+        for num in range(len(score_h) - 5):
+            score_h.pop(5)
+
     with open('././static/score.csv', 'w', encoding="utf-8") as f:
         writer = csv.writer(f)
         writer.writerow(score_h)
 
-#サイズ倍率、モード倍率、時間倍率から計算
-def calc_score(size_amp: int, mode_amp: int, time: int):
-    score_h = read_csv()
+#サイズ倍率、モード倍率、時間倍率から計算かつscore_hに追加かつcsvに書き込み
+def calc_score(size_amp: int, mode_amp: int, time: int, score_h: list):
     total = 100
     total = total * size_amp * mode_amp
     score = total - time
     score_h.append(score)
-    write_csv(score_h)#score.csvに上書き
+    write_csv(score_h)
     return score
+
 
 #順位付け(降順で並び替え)
 def juni(score):
-    n = len(score)
-    pivot = score[int(n / 2)]
- 
-    # i番目の値と基準値を比較して左l、右r、真ん中mに追加
-    l = []
-    r = []
-    m = []
-    for i in range(n):
-        sample = score[i]
-        if sample > pivot:
-            l.append(sample)
-        elif sample < pivot:
-            r.append(sample)
-        else:
-            m.append(sample)
-    # lとrの場合でそれぞれ再帰処理による分割を行う
-    if l:
-        l = juni(l)
-    if r:
-        r = juni(r)
-    return l + m + r
+    score_h = sorted(score, reverse=True)
+    return score_h
     
     
 if __name__ == '__main__':
-    print(read_csv())
-    #calc_score(9,4,123)
-    #calc_score(9,2,323)
-    #calc_score(16,4,500)
+    calc_score(9,4,1000,read_csv())
     
     
     
