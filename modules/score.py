@@ -7,7 +7,7 @@ def read_csv():#score_hをリスト型で返す
         list = reader.__next__() #ヘッダーの読み込み
     for i in list:
         score_h.append(int(i))
-    return score_h
+    return score_h#list型
 
 def write_csv(score):#リスト型のscore_hをcsvに書き込み
     score_h = juni(score)
@@ -36,7 +36,7 @@ def juni(score):
     
     
 if __name__ == '__main__':
-    calc_score(9,4,1000,read_csv())
+    calc_score(25,10,1,read_csv())
     
     
     
