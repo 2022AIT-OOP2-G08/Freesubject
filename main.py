@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, url_for, redirect
-import os
+import os, time
 
-from modules import score
+from modules import score, timer
 
 app = Flask(__name__)
 
@@ -19,8 +19,16 @@ def upload():
         file.save(os.path.join('static/images/normal', filename))
         return redirect(url_for('upload'))#/uploadを再ロード
 
-@app.route('/game')#画面4
+@app.route('/game')#画面5
 def game():
+    timer.start = time.time
+    print("start:",timer.start)
+    return render_template('game.html')
+
+@app.route('/fin')#画面6
+def fin():
+    sec = time.time - timer.start 
+    print(sec)
     return render_template('game.html')
 
 @app.route('/show')#画面7
