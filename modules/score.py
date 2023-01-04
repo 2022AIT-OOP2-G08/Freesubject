@@ -20,6 +20,7 @@ def write_csv(score):#リスト型のscore_hをcsvに書き込み
         writer.writerow(score_h)
 
 #サイズ倍率、モード倍率、時間倍率から計算かつscore_hに追加かつcsvに書き込み
+#c_json.pyのread_json()を使ってキー指定で引数に入れてください
 def calc_score(size_amp: int, mode_amp: int, time: int, score_h: list):
     total = 100
     total = total * size_amp * mode_amp
