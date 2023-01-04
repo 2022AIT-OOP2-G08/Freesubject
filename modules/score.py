@@ -1,5 +1,5 @@
 import csv
-
+from modules import c_json
 def read_csv():#score_hをリスト型で返す
     score_h = []
     with open("./static/score.csv", "r", encoding="utf-8") as f:
