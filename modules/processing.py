@@ -85,15 +85,42 @@ def inversion(input): #色反転
     cv2.imshow('inversion_ing',img_inv)
     cv2.waitKey(0)
 
+#分割処理
+def split_img(input,rows,cols):
+    root,ext = os.path.splitext(input)
+    input_img = get_img_select_path('process')+input
+    # print(input_img)
+    img=cv2.imread(input_img)
+    chunks = []
+    for row_img in np.array_split(img, rows, axis=0):
+        for chunk in np.array_split(row_img, cols, axis=1):
+            chunks.append(chunk)
+    #print(len(chunks))
+    output_img = get_img_select_path('split')
+    for i, chunk in enumerate(chunks):
+        cv2.imwrite(output_img+f"chunk_{i:02d}"+ext,chunk)
 
+#split内の分割画像を削除
+def del_split():
+    dir = get_img_select_path('split')
+    for f in os.listdir(dir):
+        if os.path.isfile(os.path.join(dir,f)):
+            os.remove(os.path.join(dir,f))
 
 #debug用コード
 if __name__ == "__main__":
-    input = 'kinopio.jpeg'
+    input = 'sample.png'
     # gray_scale(input)
     # mosaic(input)
     # line(input)
     # changecolor(input)
-    inversion(input)
+    # inversion(input)
+
+    rows=3
+    cols=4
+    split_img(input,rows,cols)
+    #5秒後にディレクトリ内の分割画像を削除する
+    time.sleep(15)
+    del_split()
     
 
