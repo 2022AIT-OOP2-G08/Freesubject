@@ -1,0 +1,21 @@
+#imageBoxes{
+    display:flex;
+}
+
+.imageBox{
+    max-width: 25%;
+    max-height: 25%;
+    margin: 1% 1% 1% 1%;
+    border:solid 2px black;
+}
+
+.savedImg{
+    width: 98%;
+    height: 98%;
+    margin: 1% 0% 1% 0%;
+    text-align: center;
+}
+
+.imageTitle{
+    text-align: center;
+}
