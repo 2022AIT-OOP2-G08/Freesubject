@@ -2,7 +2,7 @@ import csv
 
 def read_csv():#score_hをリスト型で返す
     score_h = []
-    with open("././static/score.csv", "r", encoding="utf-8") as f:
+    with open("./static/score.csv", "r", encoding="utf-8") as f:
         reader = csv.reader(f)
         list = reader.__next__() #ヘッダーの読み込み
     for i in list:
@@ -15,7 +15,7 @@ def write_csv(score):#リスト型のscore_hをcsvに書き込み
         for num in range(len(score_h) - 5):
             score_h.pop(5)
 
-    with open('././static/score.csv', 'w', encoding="utf-8") as f:
+    with open('./static/score.csv', 'w', encoding="utf-8") as f:
         writer = csv.writer(f)
         writer.writerow(score_h)
 
@@ -36,6 +36,7 @@ def juni(score):
     
     
 if __name__ == '__main__':
+    print(read_csv())
     calc_score(25,10,1,read_csv())
     
     

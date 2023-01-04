@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>スコア</title>
+</head>
+<body>
+    <h1>ランキング</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>順位</th>
+                <th>スコア</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for score in arr %}
+            <tr>
+                <td>{{ arr.index(score) + 1 }}</td>
+                <td>{{ score }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
