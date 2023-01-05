@@ -9,7 +9,7 @@
     height: 25%;
     
     margin: 1% auto 1% 0.5%;
-    border:solid 2px black;
+    border:solid 3px black;
 }
 
 .savedImg{
@@ -23,4 +23,9 @@
 .imageTitle{
     text-align: center;
     word-break:break-word;
+}
+
+
+input[type="radio"]:checked + label{
+    border:solid 3px orange;
 }

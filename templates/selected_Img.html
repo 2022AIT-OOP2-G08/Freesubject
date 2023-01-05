@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../static/css/selected_Img.css">
-  <title>画像選択</title>
-</head>
-<body>
-  <main>
-    <h2>画像を選択</h2>
-        <div id="imageBoxes">
-            {% for image in image_List %}
-            <div class="imageBox">
-                <img src = "{{ url_for('static', filename=image['url'])}}" class="savedImg" >
-                <p class="imageTitle">{{ image["filename"] }}</p>
-            </div>
-            {% endfor %}
-        </div>
-  </main>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/selected_Img.css">
+    <script src="{{url_for('static', filename='selected_Img.js')}}"></script>
+    <title>画像選択</title>
+  </head>
+  <body>
+    <main>
+      <h2>画像を選択</h2>
+      <div id="imageBoxes">
+        {% for image in image_List %}
+          <input type="radio" id="{{ image['filename'] }}" value="rock" name="hand" style="display: none;">
+          <label class="imageBox" for="{{ image['filename'] }}">
+            <img src = "{{ url_for('static', filename=image['url'])}}" class="savedImg" >
+            <p class="imageTitle">{{ image["filename"] }}</p>
+          </label>
+        {% endfor %}
+      </div>
+    </main>
+  </body>
 </html>
