@@ -10,15 +10,22 @@
   <body>
     <main>
       <h2>画像を選択</h2>
+      <div class="buttons">
+        <button id="add_image">画像を追加</button>
+        <button id="decide_image">決定</button>
+      </div>
+      
       <div id="imageBoxes">
         {% for image in image_List %}
-          <input type="radio" id="{{ image['filename'] }}" value="rock" name="hand" style="display: none;">
+          <input type="radio" id="{{ image['filename'] }}" style="display: none;">
           <label class="imageBox" for="{{ image['filename'] }}">
             <img src = "{{ url_for('static', filename=image['url'])}}" class="savedImg" >
             <p class="imageTitle">{{ image["filename"] }}</p>
           </label>
         {% endfor %}
+        
       </div>
+      
     </main>
   </body>
 </html>

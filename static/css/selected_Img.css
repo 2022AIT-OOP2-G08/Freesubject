@@ -12,6 +12,10 @@
     border:solid 3px black;
 }
 
+input[type="radio"]:checked + label{
+    border:solid 3px orange;
+}
+
 .savedImg{
     max-width: 98%;
     max-height: 98%;
@@ -25,7 +29,25 @@
     word-break:break-word;
 }
 
+.buttons{
+    display: flex;
+    justify-content: center;
+}
 
-input[type="radio"]:checked + label{
-    border:solid 3px orange;
+#add_image{
+    display: inline-block;
+    width: 10%;
+    height: 25%;
+    margin: 0% 5% 0% 0% ;
+}
+
+#decide_image{
+    display: inline-block;
+    width: 10%;
+    height: 25%;
+    margin: 0% 0% 0% 5% ;
+}
+
+h2{
+    text-align: center;
 }
