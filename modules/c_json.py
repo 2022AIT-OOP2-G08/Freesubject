@@ -5,7 +5,7 @@ def read_json():#jsonファイルを読み込む
     json_load = json.load(json_open)
     return json_load
 
-#ホーム画面をロードしたときに行ってください
+#画面1をロードしたときに行ってください
 def init_json():#jsonファイルを初期化
     jsonfile = read_json()
     jsonfile.clear()
