@@ -11,9 +11,9 @@
     <main>
       <h2>画像を選択</h2>
       <div class="buttons">
-        <form action="{{url_for('upload')}}" method="POST" enctype="multipart/form-data" id="open_file">
-          <button id="add_image" type="submit" >画像を追加</button>
-          <input id="add_image" type="file" accept=".jpeg,.jpg,.png" name="image_file">
+        <form action="{{url_for('upload')}}" method="POST" enctype="multipart/form-data" id="open_file" name="add">
+          <button id="add_button" type="submit" disabled="true">画像を追加</button>
+          <input id="add_image" type="file" accept=".jpeg,.jpg,.png" name="image_file" onchange="onAddButton()">
           <!-- <input id="add_image" type="submit" value="画像を追加"> -->
         </form>
         
