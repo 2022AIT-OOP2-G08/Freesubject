@@ -22,3 +22,13 @@ function decideImg() {
     //     alert("画像が選択されていません。");
     // } 
 }
+
+function onAddButton(){
+    //input[type="file"]のvalueの値に応じて画像追加ボタンの活性化・非活性化を変更
+    if(document.add.add_image.value == ""){
+        document.add.add_button.disabled = true
+    }
+    else{
+        document.add.add_button.disabled = false
+    }
+}
