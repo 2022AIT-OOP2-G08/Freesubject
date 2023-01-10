@@ -17,7 +17,7 @@
       
       <div id="imageBoxes">
         {% for image in image_List %}
-          <input type="radio" id="{{ image['filename'] }}" style="display: none;">
+          <input type="radio" id="{{ image['filename'] }}" name="img" style="display: none;">
           <label class="imageBox" for="{{ image['filename'] }}">
             <img src = "{{ url_for('static', filename=image['url'])}}" class="savedImg" >
             <p class="imageTitle">{{ image["filename"] }}</p>
