@@ -11,20 +11,29 @@
     <main>
       <h2>画像を選択</h2>
       <div class="buttons">
-        <button id="add_image">画像を追加</button>
-        <button id="decide_image">決定</button>
+        <form action="{{url_for('upload')}}" method="POST" enctype="multipart/form-data" id="open_file">
+          <button id="add_image" type="submit" >画像を追加</button>
+          <input id="add_image" type="file" accept=".jpeg,.jpg,.png" name="image_file">
+          <!-- <input id="add_image" type="submit" value="画像を追加"> -->
+        </form>
+        
+        <form id="decide_image" name="decide" action="/page4" >
+          <input type="hidden" name="img_Name" value="" >
+          <button id="decide_button" disabled="true">決定</button>
+        </form>
+        
       </div>
       
-      <div id="imageBoxes">
+      <form id="imageBoxes" name="imageBoxes">
         {% for image in image_List %}
-          <input type="radio" id="{{ image['filename'] }}" name="img" style="display: none;">
+          <input type="radio" id="{{ image['filename'] }}" name="img" style="display: none;" onclick="decideImg()">
           <label class="imageBox" for="{{ image['filename'] }}">
             <img src = "{{ url_for('static', filename=image['url'])}}" class="savedImg" >
             <p class="imageTitle">{{ image["filename"] }}</p>
           </label>
         {% endfor %}
         
-      </div>
+      </form>
       
     </main>
   </body>
