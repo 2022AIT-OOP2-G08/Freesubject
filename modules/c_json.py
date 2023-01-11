@@ -21,6 +21,16 @@ def update_json(dict: dict):
     
 
 if __name__ == '__main__':
-    #update_json({'amp': 9})
-    #delete_json()
+    #main.py上での使用例
+    #画面１
+    #init_json():
+    #画面4
+    #update_json({"size_amp": n}) nは任意の倍率
+    #update_json({"mode_amp": n}) nは任意の倍率
+    #画面6
+    #sec = int(timer.end - timer.start) ゲームにかかった秒数
+    #update_json({'time': sec}) secは秒数
+    #画面7
+    #dict = read_json() このdictはそのあとにscore.pyにて使用
+
     pass

@@ -5,7 +5,6 @@ from modules import score, timer, c_json
 
 app = Flask(__name__)
 
-
 #ファイルダイアログの表示と画像のアップロード
 @app.route('/upload', methods=['GET', 'POST'])#画面2
 def upload():

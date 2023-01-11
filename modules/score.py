@@ -1,5 +1,5 @@
 import csv
-from modules import c_json
+
 def read_csv():#score_hをリスト型で返す
     score_h = []
     with open("./static/score.csv", "r", encoding="utf-8") as f:
@@ -29,7 +29,6 @@ def calc_score(size_amp: int, mode_amp: int, time: int, score_h: list):
     write_csv(score_h)
     return score
 
-
 #順位付け(降順で並び替え)
 def juni(score):
     score_h = sorted(score, reverse=True)
@@ -37,8 +36,12 @@ def juni(score):
     
     
 if __name__ == '__main__':
-    print(read_csv())
-    calc_score(25,10,1,read_csv())
+    #使用例
+    #画面7
+    #score = calc_score(dict["size_amp"],dict["mode_amp"],dict["time"],read_csv()) スコアの計算
+    #score_list = read_cvs() １から５までのスコアの配列
+    
+    pass
     
     
     
