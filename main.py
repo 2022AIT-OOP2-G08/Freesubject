@@ -35,7 +35,7 @@ def upload():
                 "filename": file,
                 "url": 'images/normal/' + file
             })
-        return render_template("selected_Img.html", image_List=imagePaths)
+        return render_template("image-select.html", image_List=imagePaths)
     # formでsubmitボタンが押されるとPOSTリクエストとなるのでこっち
     elif request.method == 'POST':
         file = request.files['image_file']
