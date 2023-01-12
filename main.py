@@ -23,7 +23,8 @@ def index():
 #         })
 #     return render_template("selected_Img.html", image_List=imagePaths)
 
-@app.route('/upload', methods=['GET', 'POST'])#画面2
+#画面2(画像選択、画像追加)
+@app.route('/upload', methods=['GET', 'POST'])
 def upload():
     # URLでhttp://127.0.0.1:5000/uploadを指定したときはGETリクエストとなるのでこっち
     if request.method == 'GET':
@@ -52,6 +53,11 @@ def page4():
     else:
         img_Name = "パラメーターがないよ"
     return render_template("testPage4.html", img_Name=img_Name)
+
+@app.route('/gameEnd', methods=["GET"])
+def gameEnd():
+    score_array = [7000,100,50]
+    return render_template("game-end.html", score_array=score_array)
 
 if __name__ == "__main__":
     # debugモードが不要の場合は、debug=Trueを消してください
