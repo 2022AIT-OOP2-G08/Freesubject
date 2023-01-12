@@ -1,0 +1,68 @@
+#imageBoxes{
+    display: flex;
+    flex-wrap:wrap;
+    align-items: center;
+}
+
+.imageBox{
+    width: 23%;
+    height: 25%;
+    
+    margin: 1% 1% 1% 0.6%;
+    border:solid 3px black;
+}
+
+input[type="radio"]:checked + label{
+    border:solid 3px orange;
+}
+
+.savedImg{
+    max-width: 98%;
+    max-height: 98%;
+    margin: 1% 1% 0 1%;
+
+    text-align: center;
+}
+
+.imageTitle{
+    text-align: center;
+    word-break:break-word;
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
+}
+
+#open_file{
+    display: inline-block;
+    width: 25%;
+    height: 25%;
+    margin: 0% 0% 0% 0% ;
+}
+
+#add_button{
+    display: inline-block;
+    margin: 0% 5% 0% 0% ;
+}
+
+#add_image{
+    display: inline-block;
+    margin: 0% 5% 0% 0% ;
+}
+
+#decide_image{
+    display: inline-block;
+    width: 10%;
+    height: 25%;
+    margin: 0% 0% 0% 5% ;
+}
+
+#decide_button{
+    display: inline-block;
+    width: 100%;
+}
+
+h2{
+    text-align: center;
+}
