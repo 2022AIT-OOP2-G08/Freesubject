@@ -55,4 +55,4 @@ def page4():
 
 if __name__ == "__main__":
     # debugモードが不要の場合は、debug=Trueを消してください
-    app.run(port=5002,debug=True)
+    app.run(port=5000,debug=True)
