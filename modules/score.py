@@ -11,9 +11,9 @@ def read_csv():#score_hをリスト型で返す
 
 def write_csv(score):#リスト型のscore_hをcsvに書き込み
     score_h = juni(score)
-    if len(score_h) > 5:#score_hが5より大きいとき残りを削除
-        for num in range(len(score_h) - 5):
-            score_h.pop(5)
+    if len(score_h) > 3:#score_hが5より大きいとき残りを削除
+        for num in range(len(score_h) - 3):
+            score_h.pop(3)
 
     with open('./static/score.csv', 'w', encoding="utf-8") as f:
         writer = csv.writer(f)
@@ -40,7 +40,7 @@ if __name__ == '__main__':
     #画面7
     #score = calc_score(dict["size_amp"],dict["mode_amp"],dict["time"],read_csv()) スコアの計算
     #score_list = read_cvs() １から５までのスコアの配列
-    calc_score(9,9,1,read_csv())
+    calc_score(2,2,2,read_csv())
     pass
     
     
