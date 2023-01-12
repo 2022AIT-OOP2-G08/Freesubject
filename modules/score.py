@@ -40,6 +40,7 @@ if __name__ == '__main__':
     #画面7
     #score = calc_score(dict["size_amp"],dict["mode_amp"],dict["time"],read_csv()) スコアの計算
     #score_list = read_cvs() １から５までのスコアの配列
+    calc_score(9,9,1,read_csv())
     pass
     
     
