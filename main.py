@@ -12,7 +12,7 @@ def index():
     return gameplay()
 
 # http://127.0.0.1:5000/
-@app.route('/gameplay')
+@app.route('/game-play')
 def gameplay():
     # アップロードされた画像を表示させる
     app.config['FOLDER'] = 'static/images/normal'
@@ -23,11 +23,11 @@ def gameplay():
     print(paths["filename"],paths['url'])
     # トップページを表示させる
     # return render_template("page5.html")
-    return render_template("gameplay.html", file=paths)
+    return render_template("game-play.html", file=paths)
 
-@app.route('/gamecomp')
-def gamecomp():
-    return render_template("gamecomp.html")
+@app.route('/game-clear')
+def gameclear():
+    return render_template("game-clear.html")
 
 @app.route('/images/uploaded/<path:filename>')
 def uploaded_file(filename):
