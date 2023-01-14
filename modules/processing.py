@@ -45,7 +45,7 @@ def split_img(input,rows,cols):
     #print(len(chunks))
     output_img = get_img_select_path('split')
     for i, chunk in enumerate(chunks):
-        cv2.imwrite(output_img+f"chunk_{i:02d}"+ext,chunk)
+        cv2.imwrite(output_img+f"chunk_{i}"+ext,chunk)
 
 #split内の分割画像を削除
 def del_split():
