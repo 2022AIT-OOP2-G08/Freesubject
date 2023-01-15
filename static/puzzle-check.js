@@ -49,9 +49,7 @@ function check(){
         for (var col=1; col<=cols; col++){
             if (chunk<cols){
                 if(chunk==0){
-                    if((r[chunk].left<=r[chunk].width/range) && (r[chunk].bottom<=r[cols*row].top+r[cols*row].height/range) && (r[chunk].bottom>=r[cols*row].top-r[cols*row].height/range)){
-                        checkcount++;
-                    }
+                    checkcount++;
                 }else {
                     if((r[chunk].left>=r[chunk-1].right-r[chunk].width/range) && (r[chunk].left<=r[chunk-1].right+r[chunk].width/range) && (r[chunk].bottom<=r[cols*row].top+r[cols*row].height/range) && (r[chunk].bottom>=r[cols*row].top-r[cols*row].height/range)){
                         checkcount++;
@@ -59,7 +57,7 @@ function check(){
                 }
             }else{
                 if(col==1){
-                    if((r[chunk].left<=r[chunk].width/range) && (r[chunk].top>=r[chunk-cols].bottom-r[chunk].height/range) && (r[chunk].top<=r[chunk-cols].bottom+r[chunk].height/range)){
+                    if((r[chunk].top>=r[chunk-cols].bottom-r[chunk].height/range) && (r[chunk].top<=r[chunk-cols].bottom+r[chunk].height/range)){
                         checkcount++;
                     }
                 }else{
