@@ -44,7 +44,7 @@ function check(){
     r=get_coordinate();
     checkcount=0;
     chunk=0;
-    range=12;
+    range=6;
     for (var row=1; row<=rows; row++){
         for (var col=1; col<=cols; col++){
             if (chunk<cols){
