@@ -1,4 +1,4 @@
-console.log('JavaScript index.js fire!')  // JavaScriptが読み込まれて実行されたことをこれで確認できます。
+//console.log('JavaScript index.js fire!')  // JavaScriptが読み込まれて実行されたことをこれで確認できます。
 rows=3;
 cols=3;
 chunks = rows*cols;
