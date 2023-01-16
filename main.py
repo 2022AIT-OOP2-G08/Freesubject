@@ -86,7 +86,11 @@ def page5():
     canvas = request.args.get('canvas', None)
     print(canvas)
     
-    return render_template("test.html", file=paths, target_files=split_path)
+    return render_template("testPage5.html", file=paths, target_files=split_path)
+
+@app.route('/page6')
+def correct():
+    return render_template("testPage6.html")
 
 
 @app.route('/gameEnd', methods=["GET"])

@@ -89,7 +89,7 @@ function correct_action(){
     if (chunks==check()){
         console.log("正解")
         //次のページへ遷移する
-        //window.location.href ='/correct'
+        window.location.href ='/page6'
     }
 }
 
