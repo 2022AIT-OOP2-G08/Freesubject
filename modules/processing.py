@@ -68,7 +68,7 @@ if __name__ == "__main__":
     #print(get_parent_path())
 
     rows=3
-    cols=4
+    cols=3
     split_img(image1,rows,cols)
     #5秒後にディレクトリ内の分割画像を削除する
     time.sleep(15)
