@@ -107,6 +107,9 @@ def page5():
     
     return render_template("testPage5.html", file=paths, target_files=split_path)
 
+@app.route('/page5', methods=["POST"])
+
+
 @app.route('/page6')
 def correct():
     return render_template("testPage6.html")
