@@ -59,15 +59,34 @@ def page4():
 
 @app.route('/page5', methods=["GET"])
 def page5():
+    img_Name = ""
+    rows=0
+    cols=0
+    if request.args.get('img_Name') is not None:
+        img_Name = request.args.get('img_Name')
+    else:
+        img_Name = "パラメーターがないよ"
+
+    if request.args.get('cols', type=int) is not None:
+        cols= request.args.get('cols', type=int)
+    else:
+        cols = "パラメーターがないよ"
+    
+    if request.args.get('rows', type=int) is not None:
+        rows= request.args.get('rows', type=int)
+    else:
+        rows = "パラメーターがないよ"
+    
+    
     # アップロードされた画像を表示させる
     app.config['FOLDER'] = 'static/images/process'
     # file = glob.glob("static/images/normal/*.png")
-    path = "static/images/process/sample.png"
+    path = "static/images/process/"+img_Name
     # print(file)
     paths = {"filename": os.path.basename(path), "url": "static/images/process/" + os.path.basename(path)}
     print(paths["filename"],paths['url'])
 
-    proapp.split_img(paths['filename'],3,3)
+    proapp.split_img(paths['filename'],rows,cols)
     
     app.config['SPLIT'] = 'sample'
     files = glob.glob("static/images/split/*")
