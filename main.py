@@ -53,6 +53,12 @@ def page4():
         img_Name = "パラメーターがないよ"
     return render_template("testPage4.html", img_Name=img_Name)
 
+@app.route('/gameEnd', methods=["GET"])
+def gameEnd():
+    score_array = [7000,100,50]
+    return render_template("game-end.html", score_array=score_array)
+
+
 if __name__ == "__main__":
     # debugモードが不要の場合は、debug=Trueを消してください
     app.run(port=5000,debug=True)
