@@ -1,9 +1,11 @@
 //console.log('JavaScript index.js fire!')  // JavaScriptが読み込まれて実行されたことをこれで確認できます。
+
+//ここでjson等でパズルの縦横分割数を取得する。
 rows=3;
 cols=3;
 chunks = rows*cols;
 
-// JSONデータ取得のWeb APIにJavaScriptからリクエストを投げ、レスポンスに応じてHTML要素を操作するサンプル
+
 // 要素の位置座標を取得
 
 //全ピースの座標を取得する
