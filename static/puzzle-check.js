@@ -88,6 +88,8 @@ function correct_action(){
     //正解時のアクション
     if (chunks==check()){
         console.log("正解")
+        //次のページへ遷移する
+        //window.location.href ='/correct'
     }
 }
 
