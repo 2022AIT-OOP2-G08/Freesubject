@@ -1,9 +1,13 @@
 //console.log('JavaScript index.js fire!')  // JavaScriptが読み込まれて実行されたことをこれで確認できます。
 
 //ここでjson等でパズルの縦横分割数を取得する。
-rows=3;
-cols=3;
-chunks = rows*cols;
+let rows=3;
+let cols=3;
+let chunks = rows*cols;
+
+window.onload = function(){
+    console.log(rows, cols, chunks);
+}
 
 
 // 要素の位置座標を取得
