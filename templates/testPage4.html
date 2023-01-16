@@ -5,9 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>テストページ4</title>
   <!-- <link rel="stylesheet" href="{{ url_for('static', filename='janken.css') }}"> -->
+  <script defer src="{{ url_for('static', filename='create.js') }}"></script>
 </head>
 <body>
   <main>
     <h1 >{{ img_Name }}</h1>
+    <h2 >分割数</h2>
+    <p>
+      <form id="create" name="cpuzzle" action="/page5">
+          <text>縦 cols</text>
+          <select id="cols" name="cols" onchange="Oncpuz()">
+              <option value="" selected disabled>選択してください</option>
+              <option value=2> 2 </option>
+              <option value=3> 3 </option>
+              <option value=4> 4 </option>
+              <option value=5> 5 </option>
+          </select>
+          <text>横 rows</text>
+          <select id="rows" name="rows" onchange="Oncpuz()">
+              <option value="" selected disabled>選択してください</option>
+              <option value=2> 2 </option>
+              <option value=3> 3 </option>
+              <option value=4> 4 </option>
+              <option value=5> 5 </option>
+          </select>
+          <button id="create_puzzle" name="create_puzzle" disabled='true'>done</button>
+      </form>
+      
+    </p>
   </main>
 </body>
