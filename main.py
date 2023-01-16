@@ -1,6 +1,8 @@
-from flask import Flask, redirect, request, render_template, url_for
+from crypt import methods
+from flask import Flask, redirect, request, render_template, url_for, send_from_directory
 import glob  # ファイルの一覧を取得用に使用
 import os  # パス操作用に使用
+import modules.processing as proapp
 
 app = Flask(__name__)
 IMG_FOLDER = os.path.join('static', 'images/normal')
@@ -57,6 +59,38 @@ def page4():
 def gameEnd():
     score_array = [7000,100,50]
     return render_template("game-end.html", score_array=score_array)
+
+@app.route('/page5', methods=["GET"])
+def page5():
+    # アップロードされた画像を表示させる
+    app.config['FOLDER'] = 'static/images/process'
+    # file = glob.glob("static/images/normal/*.png")
+    path = "static/images/process/sample.png"
+    # print(file)
+    paths = {"filename": os.path.basename(path), "url": "/images/uploaded/" + os.path.basename(path)}
+    print(paths["filename"],paths['url'])
+
+    proapp.split_img(paths['filename'],3,3)
+    
+    app.config['SPLIT'] = 'sample'
+    files = glob.glob("static/images/split/*")
+    split_path = []
+    i=0
+    for file in files:
+        name=os.path.basename(file)
+        idname=name.split('.')
+        split_path.append({
+            "filename": name,
+            "id": idname[0],
+            "url": "static/images/split/" + os.path.basename(file)
+        })
+        i+=1
+    
+    canvas = request.args.get('canvas', None)
+    print(canvas)
+    
+    return render_template("test.html", file=paths, target_files=split_path)
+
 
 
 if __name__ == "__main__":
