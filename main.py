@@ -1,8 +1,9 @@
 from crypt import methods
-from flask import Flask, redirect, request, render_template, url_for, send_from_directory
+from flask import Flask, redirect, request, render_template, url_for, jsonify,send_from_directory
 import glob  # ファイルの一覧を取得用に使用
 import os  # パス操作用に使用
 import modules.processing as proapp
+import json
 
 app = Flask(__name__)
 IMG_FOLDER = os.path.join('static', 'images/normal')
@@ -102,12 +103,30 @@ def page5():
         })
         i+=1
     
+    item = {
+            "cols": cols,
+            "rows": rows,
+        }
+    
+    try:
+        # 保存処理
+        with open('rowcol.json', 'w') as f:
+            # インデントや整形の設定を付加して吐き出し
+            json.dump(item, f, 
+                    ensure_ascii = False,
+                    indent = 4,
+                    sort_keys = True,
+                    separators = (',', ': '))
+    except IOError as e:
+        # Tracebackの表示
+        import traceback
+        traceback.print_exc()
+    
     canvas = request.args.get('canvas', None)
     print(canvas)
     
     return render_template("testPage5.html", file=paths, target_files=split_path)
 
-@app.route('/page5', methods=["POST"])
 
 
 @app.route('/page6')
