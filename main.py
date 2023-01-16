@@ -47,6 +47,7 @@ def upload():
 
 @app.route('/page4', methods=["GET"])
 def page4():
+    proapp.del_split()
     img_Name = ""
 
     if request.args.get('img_Name') is not None:
@@ -55,10 +56,6 @@ def page4():
         img_Name = "パラメーターがないよ"
     return render_template("testPage4.html", img_Name=img_Name)
 
-@app.route('/gameEnd', methods=["GET"])
-def gameEnd():
-    score_array = [7000,100,50]
-    return render_template("game-end.html", score_array=score_array)
 
 @app.route('/page5', methods=["GET"])
 def page5():
@@ -90,6 +87,12 @@ def page5():
     print(canvas)
     
     return render_template("test.html", file=paths, target_files=split_path)
+
+
+@app.route('/gameEnd', methods=["GET"])
+def gameEnd():
+    score_array = [7000,100,50]
+    return render_template("game-end.html", score_array=score_array)
 
 
 
