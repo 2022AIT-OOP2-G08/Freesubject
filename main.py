@@ -64,7 +64,7 @@ def page5():
     # file = glob.glob("static/images/normal/*.png")
     path = "static/images/process/sample.png"
     # print(file)
-    paths = {"filename": os.path.basename(path), "url": "/images/uploaded/" + os.path.basename(path)}
+    paths = {"filename": os.path.basename(path), "url": "static/images/process/" + os.path.basename(path)}
     print(paths["filename"],paths['url'])
 
     proapp.split_img(paths['filename'],3,3)
