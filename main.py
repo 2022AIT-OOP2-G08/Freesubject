@@ -103,10 +103,10 @@ def page5():
         })
         i+=1
     
-    item = {
+    item = [{
             "cols": cols,
             "rows": rows,
-        }
+        }]
     
     try:
         # 保存処理
@@ -126,7 +126,7 @@ def page5():
     print(canvas)
     
     return render_template("testPage5.html", file=paths, target_files=split_path)
-
+       
 
 
 @app.route('/page6')
