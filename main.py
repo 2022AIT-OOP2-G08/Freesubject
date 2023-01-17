@@ -46,85 +46,69 @@ def upload():
         file.save(os.path.join('static/images/normal', filename))
         return redirect(url_for('upload'))#/uploadを再ロード
 
-@app.route('/page4', methods=["GET"])
+@app.route('/page4', methods=["GET", "POST"])
 def page4():
     proapp.del_split()
-    img_Name = ""
-    if request.args.get('img_Name') is not None:
-        img_Name = request.args.get('img_Name')
+    if request.method =="GET":
+        return render_template("testPage4.html")
     else:
-        img_Name = "パラメーターがないよ"
-    return render_template("testPage4.html", img_Name=img_Name)
+        img_Name = ""
+        if request.form.get('img_Name') is not None:
+            img_Name = request.form.get('img_Name')
+        else:
+            img_Name = "パラメーターがないよ"
+        return render_template("testPage4.html", img_Name=img_Name)
 
 
-@app.route('/page5', methods=["GET"])
+@app.route('/page5', methods=["GET", "POST"])
 def page5():
-    img_Name = ""
-    rows=0
-    cols=0
-    if request.args.get('img_Name') is not None:
-        img_Name = request.args.get('img_Name')
-    else:
-        img_Name = "パラメーターがないよ"
+    if request.method =="GET":
+        return render_template("testPage5.html")
+    elif request.method =="POST":
+        img_Name = ""
+        rows=0
+        cols=0
+        if request.form.get('img_Name') is not None:
+            img_Name = request.form.get('img_Name')
+        else:
+            img_Name = "パラメーターがないよ"
 
-    if request.args.get('cols', type=int) is not None:
-        cols= request.args.get('cols', type=int)
-    else:
-        cols = "パラメーターがないよ"
-    
-    if request.args.get('rows', type=int) is not None:
-        rows= request.args.get('rows', type=int)
-    else:
-        rows = "パラメーターがないよ"
-    
-    
-    # アップロードされた画像を表示させる
-    app.config['FOLDER'] = 'static/images/process'
-    # file = glob.glob("static/images/normal/*.png")
-    path = "static/images/process/"+img_Name
-    # print(file)
-    paths = {"filename": os.path.basename(path), "url": "static/images/process/" + os.path.basename(path)}
-    print(paths["filename"],paths['url'])
+        if request.form.get('cols', type=int) is not None:
+            cols= request.form.get('cols', type=int)
+        else:
+            cols = "パラメーターがないよ"
+        
+        if request.form.get('rows', type=int) is not None:
+            rows= request.form.get('rows', type=int)
+        else:
+            rows = "パラメーターがないよ"
+        
+        
+        # アップロードされた画像を表示させる
+        app.config['FOLDER'] = 'static/images/process'
+        # file = glob.glob("static/images/normal/*.png")
+        path = "static/images/process/"+img_Name
+        # print(file)
+        paths = {"filename": os.path.basename(path), "url": "static/images/process/" + os.path.basename(path)}
+        print(paths["filename"],paths['url'])
 
-    proapp.split_img(paths['filename'],rows,cols)
-    
-    app.config['SPLIT'] = 'sample'
-    files = glob.glob("static/images/split/*")
-    split_path = []
-    i=0
-    for file in files:
-        name=os.path.basename(file)
-        idname=name.split('.')
-        split_path.append({
-            "filename": name,
-            "id": idname[0],
-            "url": "static/images/split/" + os.path.basename(file)
-        })
-        i+=1
-    
-    item = [{
-            "cols": cols,
-            "rows": rows,
-        }]
-    
-    try:
-        # 保存処理
-        with open('rowcol.json', 'w') as f:
-            # インデントや整形の設定を付加して吐き出し
-            json.dump(item, f, 
-                    ensure_ascii = False,
-                    indent = 4,
-                    sort_keys = True,
-                    separators = (',', ': '))
-    except IOError as e:
-        # Tracebackの表示
-        import traceback
-        traceback.print_exc()
-    
-    canvas = request.args.get('canvas', None)
-    print(canvas)
-    
-    return render_template("testPage5.html", file=paths, target_files=split_path)
+        proapp.split_img(paths['filename'],rows,cols)
+        
+        app.config['SPLIT'] = 'sample'
+        files = glob.glob("static/images/split/*")
+        split_path = []
+        i=0
+        for file in files:
+            name=os.path.basename(file)
+            idname=name.split('.')
+            split_path.append({
+                "filename": name,
+                "id": idname[0],
+                "url": "static/images/split/" + os.path.basename(file)
+            })
+            i+=1
+        
+        return render_template("testPage5.html", file=paths, target_files=split_path)
        
 
 
