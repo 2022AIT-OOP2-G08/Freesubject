@@ -46,22 +46,15 @@ def upload():
         file.save(os.path.join('static/images/normal', filename))
         return redirect(url_for('upload'))#/uploadを再ロード
 
-@app.route('/page4', methods=["GET", "POST"]) # 画面4
+@app.route('/page4', methods=["GET"])
 def page4():
-    if request.method == 'GET':
-        img_Name = ""
-        if request.form.get('img_Name') is not None:
-            img_Name = request.form.get('img_Name')
-        else:
-            img_Name = "パラメーターがないよ"
-        return render_template("testPage4.html", img_Name=img_Name)
-    elif request.method == 'POST':
-        img_Name = ""
-        if request.form.get('img_Name') is not None:
-            img_Name = request.form.get('img_Name')
-        else:
-            img_Name = "パラメーターがないよ"
-        return render_template("testPage4.html", img_Name=img_Name)
+    proapp.del_split()
+    img_Name = ""
+    if request.args.get('img_Name') is not None:
+        img_Name = request.args.get('img_Name')
+    else:
+        img_Name = "パラメーターがないよ"
+    return render_template("testPage4.html", img_Name=img_Name)
 
 
 @app.route('/page5', methods=["GET"])
