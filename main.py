@@ -107,6 +107,25 @@ def page5():
                 "url": "static/images/split/" + os.path.basename(file)
             })
             i+=1
+
+        item = [{
+            "cols": cols,
+            "rows": rows,
+        }]
+    
+        try:
+            # 保存処理
+            with open('rowcol.json', 'w') as f:
+                # インデントや整形の設定を付加して吐き出し
+                json.dump(item, f, 
+                        ensure_ascii = False,
+                        indent = 4,
+                        sort_keys = True,
+                        separators = (',', ': '))
+        except IOError as e:
+            # Tracebackの表示
+            import traceback
+            traceback.print_exc()
         
         return render_template("testPage5.html", file=paths, target_files=split_path)
        
