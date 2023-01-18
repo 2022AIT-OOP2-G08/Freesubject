@@ -1,0 +1,15 @@
+.buttons{
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+}
+.image{
+    width: 300px;
+    height: auto;
+    margin: 0 auto;
+}
+.image img {
+    width: 50%;
+    height: 50%;
+}
+

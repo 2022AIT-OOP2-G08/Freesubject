@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="image-preview.js"></script>
+    <link rel="stylesheet" href="../static/css/image-preview.css">
+    <title>難易度選択</title>
+    <script type="text/javascript">
+      function LinkClick(param) {
+        var elem = document.getElementById("image01");
+  
+        switch (param) {
+          case 0:
+            elem.src = "../static/images/process/gray_sample.png";
+            break;
+          case 1:
+            elem.src = "../static/images/process/mosaic_sample.png";
+            break;
+          case 2:
+            elem.src = "../static/images/process/inversion_sample.png";
+            break;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <main>
+      <button onclick="javascript:window.history.back(-1);return false;">戻る</button>
+      <h1>難易度を選択</h1>
+      <div class="image">
+        <img id = "image01" src="../static/images/normal/sample.png">
+      </div>
+      <div class="buttons">
+        <button id="grayscale" onclick="LinkClick(0)">グレースケール</button>
+        <button id="mosaic" onclick="LinkClick(1)">モザイク</button>
+        <button id="inversion" onclick="LinkClick(2)">色反転</button>
+      </div>
+    </main>
+  </body>
+</html>
