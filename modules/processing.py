@@ -35,9 +35,9 @@ def gray_scale(input): #グレースケール化
     img = get_img_select_path('normal')+input
     img_bgr = cv2.imread(img)
     img_gray = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2GRAY)
-    cv2.imshow('gray_img',img_gray)
+    # cv2.imshow('gray_img',img_gray)
     cv2.imwrite(get_img_select_path('process') + '/gray_' + input,img_gray)
-    cv2.waitKey(0)
+    # cv2.waitKey(0)
 
 
 def mosaic(input, ratio=0.005): #モザイク化
@@ -45,9 +45,9 @@ def mosaic(input, ratio=0.005): #モザイク化
     img_bgr = cv2.imread(img) 
     small = cv2.resize(img_bgr, None, fx=ratio, fy=ratio, interpolation=cv2.INTER_NEAREST)
     img_mosaic =  cv2.resize(small, img_bgr.shape[:2][::-1], interpolation=cv2.INTER_NEAREST)
-    cv2.imshow('mosaic_img',img_mosaic)
+    #cv2.imshow('mosaic_img',img_mosaic)
     cv2.imwrite(get_img_select_path('process') + '/mosaic_' + input,img_mosaic)
-    cv2.waitKey(0)
+    #cv2.waitKey(0)
 
 def line(input): #線画化
     img = get_img_select_path('normal')+input
@@ -62,9 +62,9 @@ def line(input): #線画化
     dilated = cv2.dilate(gray, neiborhood24, iterations=1)
     diff = cv2.absdiff(dilated, gray)
     img_line = 255 - diff
-    cv2.imshow('line_img',img_line)
+    #cv2.imshow('line_img',img_line)
     cv2.imwrite(get_img_select_path('process') + '/line_' + input,img_line)
-    cv2.waitKey(0)
+    #cv2.waitKey(0)
 
 def changecolor(input): #色変化
     img = get_img_select_path('normal')+input
@@ -78,17 +78,17 @@ def changecolor(input): #色変化
     img_hsv[:,:,(1)] = img_hsv[:,:,(1)]*s_mag # 彩度の計算
     img_hsv[:,:,(2)] = img_hsv[:,:,(2)]*v_mag # 明度の計算
     img_change = cv2.cvtColor(img_hsv,cv2.COLOR_HSV2BGR) # 色空間をHSVからBGRに変換
-    cv2.imshow('line_img',img_change)
+    #cv2.imshow('line_img',img_change)
     cv2.imwrite(get_img_select_path('process') + '/change_' + input,img_change)
-    cv2.waitKey(0)
+    #cv2.waitKey(0)
 
 def inversion(input): #色反転
     img = get_img_select_path('normal')+input
     img_bgr = cv2.imread(img)
     img_inv = cv2.bitwise_not(img_bgr)
-    cv2.imshow('inversion_ing',img_inv)
+    #cv2.imshow('inversion_ing',img_inv)
     cv2.imwrite(get_img_select_path('process') + '/inversion_' + input,img_inv)
-    cv2.waitKey(0)
+    #cv2.waitKey(0)
 
 #分割処理
 def split_img(input,rows,cols):
