@@ -33,9 +33,8 @@ def index():
 #         })
 #     return render_template("selected_Img.html", image_List=imagePaths)
 
+
 # 画面2(画像選択、画像追加)
-
-
 @app.route('/upload', methods=['GET', 'POST'])
 def upload():
     # URLでhttp://127.0.0.1:5000/uploadを指定したときはGETリクエストとなるのでこっち
