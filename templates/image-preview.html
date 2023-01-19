@@ -7,21 +7,23 @@
     <title>難易度選択</title>
     <script type="text/javascript">
       function LinkClick(param) {
+        
         var elem = document.getElementById("image01");
-        img_Name = "";
-  
+        // var x = {{img_Name|tojson}};
+        const img_Name =  document.getElementById("imgName");
+        console.log(img_Name.innerHTML)
         switch (param) {
           case 0:
-            elem.src = "../static/images/process/gray_sample.png"
-            //elem.src = "../static/images/process/gray_" + img_Name;
+            //elem.src = "../static/images/process/gray_sample.png"
+            elem.src = "../static/images/process/gray_" + img_Name.innerHTML;
             break;
           case 1:
-            elem.src = "../static/images/process/mosaic_sample.png"
-            //elem.src = "../static/images/process/mosaic_" + img_Name;
+            //elem.src = "../static/images/process/mosaic_sample.png"
+            elem.src = "../static/images/process/mosaic_" + img_Name.innerHTML;
             break;
           case 2:
-            elem.src = "../static/images/process/inversion_sample.png"
-            //elem.src = "../static/images/process/inversion_" + img_Name;
+            //elem.src = "../static/images/process/inversion_sample.png"
+            elem.src = "../static/images/process/inversion_" + img_Name.innerHTML;
             break;
         }
       }
@@ -29,10 +31,11 @@
   </head>
   <body>
     <main>
+      <div id="imgName" style="display: none;">{{img_Name}}</div>
       <button onclick="javascript:window.history.back(-1);return false;">戻る</button>
       <h1>難易度を選択</h1>
       <div class="image">
-        <img id = "image01" src="../static/images/normal/sample.png">
+        <img id = "image01" src="{{ url_for('static', filename=img_Path)}}">
       </div>
       <div class="buttons">
         <button id="grayscale" onclick="LinkClick(0)">グレースケール</button>

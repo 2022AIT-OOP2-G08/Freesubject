@@ -3,7 +3,7 @@ import glob  # ファイルの一覧を取得用に使用
 import os  # パス操作用に使用
 import time
 
-from modules import score, timer, c_json
+from modules import score, timer, c_json, processing
 
 app = Flask(__name__)
 IMG_FOLDER = os.path.join('static', 'images/normal')
@@ -84,9 +84,13 @@ def page4():
 
     if request.args.get('img_Name') is not None:
         img_Name = request.args.get('img_Name')
+        processing.gray_scale(img_Name)
+        processing.mosaic(img_Name)
+        processing.inversion(img_Name)
+        img_Path = "images/normal/" + img_Name
     else:
         img_Name = "パラメーターがないよ"
-    return render_template("testPage4.html", img_Name=img_Name)
+    return render_template("image-preview.html", img_Name=img_Name, img_Path=img_Path)
 
 
 @app.route('/gameEnd', methods=["GET"])
