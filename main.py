@@ -3,6 +3,7 @@ import json  # Python標準のJSONライブラリを読み込んで、データ�
 import glob  # ファイルの一覧を取得用に使用
 import os  # パス操作用に使用
 import random
+import modules.processing as proapp
 
 app = Flask(__name__)
 app.config["JSON_AS_ASCII"] = False  # 日本語などのASCII以外の文字列を返したい場合は、こちらを設定しておく
