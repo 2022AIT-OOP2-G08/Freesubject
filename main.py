@@ -15,23 +15,47 @@ def index():
 @app.route('/game-play')
 def gameplay():
     # アップロードされた画像を表示させる
-    app.config['FOLDER'] = 'static/images/normal'
+    app.config['FOLDER'] = 'static/images/normal/'
     # file = glob.glob("static/images/normal/*.png")
-    path = "static/images/normal/sample.png"
+    path = app.config['FOLDER'] + "sample2.jpeg"
     # print(file)
     paths = {"filename": os.path.basename(path), "url": "/images/uploaded/" + os.path.basename(path)}
     print(paths["filename"],paths['url'])
-    # トップページを表示させる
-    # return render_template("page5.html")
-    return render_template("game-play.html", file=paths)
+    
+    # 分割した画像を取得する
+    app.config['SPLIT'] = 'static/images/split/'
+    files = glob.glob(app.config['SPLIT'] + "sample2/*")
+    print(files.sort())
+    split_path = []
+    file_count = []
+    count = 1
+    for file in files:
+        split_path.append({
+            "id": str(count),
+            "filename": os.path.basename(file),
+            "url": "/images/split/"+ "sample2/" + os.path.basename(file)
+        })
+        file_count.append(count)
+        count += 1
+    
+    print(file_count)
+    split_file_count = [file_count[idx:idx + 3] for idx in range(0,len(file_count), 3)]
+    print(split_file_count)
+    
+    return render_template("game-play.html", file=paths, split_file_count=split_file_count, target_files=split_path)
 
 @app.route('/game-clear')
 def gameclear():
-    return render_template("game-clear.html")
+    path = "static/images/normal/sample.png"
+    return render_template("game-clear.html", path=path)
 
 @app.route('/images/uploaded/<path:filename>')
 def uploaded_file(filename):
     return send_from_directory(app.config['FOLDER'], filename)
+
+@app.route('/images/split/<path:filename>')
+def split_file(filename):
+    return send_from_directory(app.config['SPLIT'], filename)
 
 if __name__ == "__main__":
     # debugモードが不要の場合は、debug=Trueを消してください

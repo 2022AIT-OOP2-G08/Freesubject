@@ -16,6 +16,7 @@ body{
 }
 
 .puzzle-dis1{
+    text-align: center;
     flex-grow: 2;
 }
 
@@ -30,12 +31,38 @@ body{
 .puzzle-dis2-sub2{
     text-align: center;
 }
-.complete-image{
-    width: 300px;
-    height: 400px;
-}
+/* .complete-image{
+    width: 400px;
+    height: 300px;
+} */
 
 .puzzle-pos{
-    height: 50%;
-    background-color: beige;;
+    display: flex;
+    flex-wrap: wrap;
+    height: auto;
+    background-color: beige;
+}
+
+
+.block{
+    padding: 10px;
+    width: 100px;
+    height: 100px;
+}
+
+td{
+    height: 100px; 
+    width: 100px; 
+    border: 2px solid rgb(115, 255, 155);
+}
+
+table{
+    border: 4px solid rgb(115, 255, 155);
+}
+
+.dragtarget{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    vertical-align: middle;
 }
