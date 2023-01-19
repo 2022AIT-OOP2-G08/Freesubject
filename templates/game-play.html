@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="static/css/game-play.css">
     <script defer src="{{ url_for('static', filename='game-play.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='puzzle-check.js') }}"></script>
     <title>ゲームプレイ画面</title>
 </head>
 <body>
@@ -18,7 +19,7 @@
                             {% for file_count in split_file_count%}
                             <tr>
                                 {% for file in file_count%}
-                                <td id = "t{{file}}" class="dragpoint"></td>
+                                <td id = "{{file}}" class="dragpoint"></td>
                                 {% endfor %}
                             </tr>
                             {% endfor %}
@@ -38,7 +39,7 @@
             
             {% for file in target_files %}
             <div class="block" >
-                <img id="i{{ file['id'] }}" class="dragtarget" src="{{ file['url'] }}" alt="{{ file['filename'] }}">
+                <img id="{{ file['id'] }}" class="dragtarget" src="{{ file['url'] }}" alt="{{ file['filename'] }}">
             </div>
             {% endfor %}
         </div>

@@ -25,17 +25,19 @@ def gameplay():
     
     # 分割した画像を取得する
     app.config['SPLIT'] = 'static/images/split/'
-    files = glob.glob(app.config['SPLIT'] + "sample2/*")
+    files = glob.glob(app.config['SPLIT']+ '*')
     print(files.sort())
     random.shuffle(files)
     split_path = []
     file_count = []
     count = 1
     for file in files:
+        fname = os.path.basename(file)
+        fid = fname.split('.')
         split_path.append({
-            "id": str(count),
+            "id": fid[0],
             "filename": os.path.basename(file),
-            "url": "/images/split/"+ "sample2/" + os.path.basename(file)
+            "url": "/images/split/" + os.path.basename(file)
         })
         file_count.append(count)
         count += 1
@@ -48,7 +50,7 @@ def gameplay():
 
 @app.route('/game-clear')
 def gameclear():
-    path = "static/images/normal/sample.png"
+    path = "static/images/normal/sample2.jpeg"
     return render_template("game-clear.html", path=path)
 
 @app.route('/images/uploaded/<path:filename>')

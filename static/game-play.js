@@ -78,6 +78,7 @@ function setUp(){
                     console.log(count);
                 }
             }
+            correct_action();
             // 終了判定
             // if(count === dropbox.length){
             //     // 画面遷移
