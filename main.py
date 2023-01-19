@@ -25,7 +25,7 @@ def gameplay():
     
     # 分割した画像を取得する
     app.config['SPLIT'] = 'static/images/split/'
-    files = glob.glob(app.config['SPLIT'] + "sample2/*")
+    files = glob.glob(app.config['SPLIT'] + "*")
     print(files.sort())
     split_path = []
     file_count = []
@@ -36,7 +36,7 @@ def gameplay():
         split_path.append({
             "id": fid[0], ##chunk_(number)
             "filename": fname,
-            "url": "/images/split/"+ "sample2/" + fname
+            "url": "/images/split/" + fname
         })
         file_count.append(count)
         count += 1
