@@ -2,8 +2,9 @@ from flask import Flask, redirect, request, render_template, url_for
 import glob  # ファイルの一覧を取得用に使用
 import os  # パス操作用に使用
 import time
+import random
 
-from modules import score, timer, c_json, processing
+from modules import score, timer, c_json
 
 app = Flask(__name__)
 IMG_FOLDER = os.path.join('static', 'images/normal')
@@ -55,6 +56,54 @@ def upload():
         file.save(os.path.join('static/images/normal', filename))
         return redirect(url_for('upload'))  # /uploadを再ロード
 
+@app.route('/game-play')
+def gameplay():
+    # アップロードされた画像を表示させる
+    app.config['FOLDER'] = 'static/images/normal/'
+    # file = glob.glob("static/images/normal/*.png")
+    path = app.config['FOLDER'] + "sample2.jpeg"
+    # print(file)
+    paths = {"filename": os.path.basename(path), "url": "/images/uploaded/" + os.path.basename(path)}
+    print(paths["filename"],paths['url'])
+    
+    # 分割した画像を取得する
+    app.config['SPLIT'] = 'static/images/split/'
+    files = glob.glob(app.config['SPLIT']+ '*')
+    print(files.sort())
+    random.shuffle(files)
+    split_path = []
+    file_count = []
+    count = 1
+    for file in files:
+        fname = os.path.basename(file)
+        fid = fname.split('.')
+        split_path.append({
+            "id": fid[0],
+            "filename": os.path.basename(file),
+            "url": "/images/split/" + os.path.basename(file)
+        })
+        file_count.append(count)
+        count += 1
+    
+    print(file_count)
+    split_file_count = [file_count[idx:idx + 3] for idx in range(0,len(file_count), 3)]
+    print(split_file_count)
+    
+    return render_template("game-play.html", file=paths, split_file_count=split_file_count, target_files=split_path)
+
+@app.route('/game-clear')
+def gameclear():
+    path = "static/images/normal/sample2.jpeg"
+    return render_template("game-clear.html", path=path)
+
+@app.route('/images/uploaded/<path:filename>')
+def uploaded_file(filename):
+    return send_from_directory(app.config['FOLDER'], filename)
+
+@app.route('/images/split/<path:filename>')
+def split_file(filename):
+    return send_from_directory(app.config['SPLIT'], filename)
+
 
 @app.route('/game')  # 画面5
 def game():
@@ -84,13 +133,9 @@ def page4():
 
     if request.args.get('img_Name') is not None:
         img_Name = request.args.get('img_Name')
-        processing.gray_scale(img_Name)
-        processing.mosaic(img_Name)
-        processing.inversion(img_Name)
-        img_Path = "images/normal/" + img_Name
     else:
         img_Name = "パラメーターがないよ"
-    return render_template("image-preview.html", img_Name=img_Name, img_Path=img_Path)
+    return render_template("testPage4.html", img_Name=img_Name)
 
 
 @app.route('/gameEnd', methods=["GET"])

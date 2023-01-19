@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/game-clear.css">
+    <title>ゲーム終了画面</title>
+</head>
+<body>
+    <div class = "game-result">
+        <p style="color: red;">Congratulations!</p>
+        <div class="display-puzzle">
+            <img src="{{ path }}" alt="完成" width="400px" height="300px">
+        </div>
+    </div>
+    <div class="btn-pos">
+        <button onclick="location.href='./game-play'" class="score-btn">スコア表示画面</button>
+    </div>
+</body>
+</html>
