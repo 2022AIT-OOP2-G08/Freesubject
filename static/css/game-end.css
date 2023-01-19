@@ -1,0 +1,84 @@
+h1{
+    text-align: center;
+    margin: 3% 0% 0% 0% ;
+    font-size: 300%;
+}
+
+/* スコア系 */
+#time_Attack_Result_Box{
+    display: flex;
+    justify-content: center;
+    margin: 0.5% 0% 2% 0% ;
+    color: black;
+}
+
+#time_Attack_Result{
+    padding-top: 1%;
+    padding-bottom: 3%;
+    padding-right: 25%;
+    padding-left: 25%;
+    font-size: 250%;
+    border: 2px solid black; 
+    background: rgb(212, 255, 185);
+}
+
+.score{
+    margin: 1% 0% 0% 0%;
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-left: 25%;
+    border-bottom: 2px solid black; 
+}
+/* スコア系 */
+
+
+#buttons{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    height: 300%;
+}
+.btn:hover{
+    opacity: 0.6;
+}
+
+
+/* リザルトボタン系 */
+#return_To_Title{
+    display: flex;
+    padding-right: 3%;
+    min-width: 15%;
+}
+
+#return_To_Title_Button{
+    width: 200%;
+    font-size: 1.2em;
+    background: skyblue;
+    border-radius: 10px;
+    border-color: rgb(67, 67, 67);
+    color: white;
+    text-align: center;
+}
+/* リザルトボタン系 */
+
+
+/* 難易度変更系 */
+#change_Of_Difficulty{
+    display: flex; 
+    padding-right: 15%;
+    padding-left: 3%;
+}
+
+#change_Of_Difficulty_Button{
+    width: 400%;
+    font-size: 1.2em;
+    background: skyblue;
+    border-radius: 10px;
+    border-color: rgb(67, 67, 67);
+    padding-left: 25px;
+    padding-right: 25px;
+    color: white;
+    text-align: center;
+}
+/* 難易度変更系 */
+

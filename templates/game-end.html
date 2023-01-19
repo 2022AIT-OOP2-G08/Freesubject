@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/game-end.css">
+    <!-- <script src="{{url_for('static', filename='image-select.js')}}"></script> -->
+    <title>ゲームリザルト</title>
+  </head>
+  <body>
+    <main>
+        <h1>パズル完成</h1>
+        <!-- スコア結果を表示 -->
+        <form id="time_Attack_Result_Box" name="time_Attack_Result_Box">
+            <ol id="time_Attack_Result">
+                <p id="ranking_Title">スコアランキング</p>
+                <li class="score" id="firstTime">{{score_array[0]}} Pt</li>
+                <li class="score" id="secondTime">{{score_array[1]}} Pt</li>
+                <li class="score" id="thirdTime">{{score_array[2]}} Pt</li>
+            </ol>
+        </form> 
+
+        <div id="buttons" style="height:50px">
+            <!-- タイトルに戻るボタン -->
+            <form id="return_To_Title" name="return_To_Title" action="/" >
+                <button class="btn" id="return_To_Title_Button">タイトルに戻る</button>
+            </form>
+            
+            <!-- 同じ画像で難易度を変えるボタン(おそらく画像のファイル名がいるのでinput[type="hidden"]のvalueに画像のファイル名を入れたい) -->
+            <form id="change_Of_Difficulty" name="change_Of_Difficulty" action="/page4" >
+                <input type="hidden" name="img_Name" value="" >
+                <button class="btn" id="change_Of_Difficulty_Button">同じ画像で難易度を変える</button>
+            </form>
+        </div>
+        
+    </main>
+  </body>
+</html>

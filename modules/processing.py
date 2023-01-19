@@ -112,6 +112,7 @@ def del_split():
         if os.path.isfile(os.path.join(dir,f)):
             os.remove(os.path.join(dir,f))
 
+
 #debug用コード
 if __name__ == "__main__":
     input = 'sample.png'
@@ -127,5 +128,3 @@ if __name__ == "__main__":
     # #5秒後にディレクトリ内の分割画像を削除する
     # time.sleep(15)
     del_split()
-    
-
