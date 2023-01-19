@@ -97,7 +97,6 @@ def page5():
         app.config['SPLIT'] = 'sample'
         files = glob.glob("static/images/split/*")
         split_path = []
-        i=0
         for file in files:
             name=os.path.basename(file)
             idname=name.split('.')
@@ -106,7 +105,6 @@ def page5():
                 "id": idname[0],
                 "url": "static/images/split/" + os.path.basename(file)
             })
-            i+=1
         
         return render_template("testPage5.html", file=paths, target_files=split_path, cols=cols, rows=rows)
        
