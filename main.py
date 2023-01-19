@@ -27,6 +27,7 @@ def gameplay():
     app.config['SPLIT'] = 'static/images/split/'
     files = glob.glob(app.config['SPLIT'] + "sample2/*")
     print(files.sort())
+    random.shuffle(files)
     split_path = []
     file_count = []
     count = 1
