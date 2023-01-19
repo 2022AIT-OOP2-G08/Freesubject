@@ -1,0 +1,29 @@
+/* ボタンデザイン用css（ここからコピーして使ってね） */
+/* #button（クラスなら.button） <- 「button」の部分は自分がつけたタグ（クラス）に変更*/
+/* クラスで設定したほうが複数のボタンに一気につけれるが全部同じになるので、大きさ等を変えたい場合は注意 */
+
+#button{
+    /* 基本となるcss。大きさ等のcssは入っていないので自分でつけてください */
+    /* padding系をこのままつけると逆に変になってしまうことがあると思うので各自変更してください */
+    background-color: skyblue;
+    border-radius: 10px;
+    border-color: rgb(67, 67, 67);
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: white;
+    text-align: center;
+}
+
+#button:disabled{
+    /* ボタンが不活性状態になっている時に適用されるcss。不活性状態にしないのならいらない */
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: black;
+}
+
+#button:hover{
+    /* ボタンにカーソルが乗っかっている時に適用されるcss。 */
+    opacity: 0.6;
+}
