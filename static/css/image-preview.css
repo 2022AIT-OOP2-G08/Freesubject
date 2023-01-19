@@ -1,15 +1,29 @@
 .buttons{
     display: flex;
-    justify-content: center;
     justify-content: space-evenly;
+    position: relative;
+    top: 100px;
 }
+
 .image{
-    width: 300px;
+    width: 500px;
     height: auto;
+    text-align: center;
     margin: 0 auto;
 }
 .image img {
     width: 50%;
     height: 50%;
+    border: 1px solid #333;
 }
+html {
+    background-color: #00539F;
+}
+.startbutton{
+    display: flex;
+    justify-content: space-evenly;
+    position: relative;
+    top: 200px;
+}
+
 
