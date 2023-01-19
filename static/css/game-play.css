@@ -1,0 +1,68 @@
+html{
+    height: 100%;
+}
+
+body{
+    height: 100%;
+}
+
+.puzzle{
+    height: 100%;
+}
+
+.puzzle-dis{
+    display: flex;
+    justify-content: space-around; 
+}
+
+.puzzle-dis1{
+    text-align: center;
+    flex-grow: 2;
+}
+
+.puzzle-dis2{
+    background-color: whitesmoke;
+    flex-grow: 1;
+}
+.puzzle-dis2-sub1{
+    text-align: right;
+    margin: 10px;
+}
+.puzzle-dis2-sub2{
+    text-align: center;
+}
+/* .complete-image{
+    width: 400px;
+    height: 300px;
+} */
+
+.puzzle-pos{
+    display: flex;
+    flex-wrap: wrap;
+    height: auto;
+    background-color: beige;
+}
+
+
+.block{
+    padding: 10px;
+    width: 100px;
+    height: 100px;
+}
+
+td{
+    height: 100px; 
+    width: 100px; 
+    border: 2px solid rgb(115, 255, 155);
+}
+
+table{
+    border: 4px solid rgb(115, 255, 155);
+}
+
+.dragtarget{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    vertical-align: middle;
+}

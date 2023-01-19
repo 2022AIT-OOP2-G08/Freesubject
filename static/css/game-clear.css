@@ -1,0 +1,21 @@
+.game-result{
+    text-align: center;
+}
+
+.game-result p{
+    font-size: 36px;
+    color: red;
+}
+.display-puzzle{
+    width: auto;
+    height: auto;
+    background-color: bisque;
+}
+.btn-pos{
+    margin: 10px;
+    text-align: right;
+}
+
+.score-btn{
+    font-size: 20px;
+}

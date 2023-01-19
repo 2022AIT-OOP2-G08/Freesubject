@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/game-play.css">
+    <script defer src="{{ url_for('static', filename='game-play.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='puzzle-check.js') }}"></script>
+    <title>ゲームプレイ画面</title>
+</head>
+<body>
+    <div class="puzzle">
+        <div class="puzzle-dis">
+                <div class="puzzle-dis1">
+                    <!-- <canvas style="border: 4px solid rgb(115, 255, 155); width: 400px; height:300px; top: 50px"></canvas> -->
+                    <table cellpadding="0" cellspacing="0">
+                        <tbody>
+                            {% for file_count in split_file_count%}
+                            <tr>
+                                {% for file in file_count%}
+                                <td id = "t{{file}}" class="dragpoint"></td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            <div class="puzzle-dis2">
+                <div class="puzzle-dis2-sub1">
+                    Time: <span id="time">--.--</span>
+                </div>
+                <div class="puzzle-dis2-sub2">
+                    <img  src="{{ file['url'] }}" alt="{{ file['filename'] }}" width="400px" height="300px" style="margin: 0%;">
+                </div>
+            </div>
+        </div>
+        <div class = "puzzle-pos" style="height: 250px;">
+            
+            {% for data in target_files %}
+            <div class="block" >
+                <img id="{{ data['id'] }}" class="dragtarget" src="{{ data['url'] }}" alt="{{ data['filename'] }}">
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
