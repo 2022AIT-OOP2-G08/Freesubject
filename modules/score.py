@@ -33,6 +33,11 @@ def calc_score(size_amp: int, mode_amp: int, time: int, score_h: list):
 def juni(score):
     score_h = sorted(score, reverse=True)
     return score_h
+
+#モードによるスコア倍率
+def mode_score(mode):
+    mode_name={"normal":1,"gray":3,"mosaic":4,"inversion":2}
+    return mode_name[mode]
     
     
 if __name__ == '__main__':

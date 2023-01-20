@@ -21,25 +21,6 @@ def index():
     # テスト用トップページを表示させる
     return render_template("testTopPage.html")
 
-# @app.route('/upload', methods=['GET', 'POST'])#画面2
-# def upload():
-#     # URLでhttp://127.0.0.1:5000/uploadを指定したときはGETリクエストとなるのでこっち
-#     if request.method == 'GET':
-#         return render_template('upload.html')
-
-# @app.route('/selected_Img')
-# def showSelectedImg():
-#     # アップロードされた画像を表示させる
-#     IMG_LIST = os.listdir('static/images/normal')
-#     imagePaths = []
-#     for file in IMG_LIST:
-#         imagePaths.append({
-#             "filename": file,
-#             "url": 'images/normal/' + file
-#         })
-#     return render_template("selected_Img.html", image_List=imagePaths)
-
-
 # 画面2(画像選択、画像追加)
 @app.route('/upload', methods=['GET', 'POST'])
 def upload():
@@ -137,8 +118,6 @@ def gameclear():
     # 経過時間計算
     timer.end = time.time()
     sec = int(timer.end - timer.start -3)  # ゲームにかかった秒数
-    dict = {'time': sec}
-    c_json.update_json(dict)  # jsonファイルに秒数を保存
     img_Name=""
     rowcol=0
     if request.form.get('img_Name') is not None:
@@ -151,8 +130,14 @@ def gameclear():
     else:
         rowcol = "パラメーターがないよ"
 
-    ###ここでスコアを計算できるかも(縦横のピースと時間はデータ取得済み)
-
+    imgmode,nomal = img_Name.split("_")
+    
+    mode_amp = score.mode_score(imgmode)
+    
+    ##スコア計算・csvに上書き
+    dict = {'size_amp': rowcol,"mode_amp": mode_amp,'time': sec}
+    c_json.update_json(dict)  # jsonファイルに秒数を保存
+    score.calc_score(dict['size_amp'],dict['mode_amp'],dict['time'],score.read_csv())
     #path = processing.get_img_select_path('process')+img_Name
     return render_template("game-clear.html", img_Name=img_Name)
 
@@ -164,27 +149,6 @@ def uploaded_file(filename):
 def split_file(filename):
     return send_from_directory(app.config['SPLIT'], filename)
 
-
-#@app.route('/game')  # 画面5
-#ef game():
-#    timer.start = time.time()  # スタート時間
-#    return render_template('game.html')
-
-
-#@app.route('/fin')  # 画面6
-#def fin():
-#    # 経過時間計算
-#    timer.end = time.time()
-#    sec = int(timer.end - timer.start)  # ゲームにかかった秒数
-#    dict = {'time': sec}
-#    c_json.update_json(dict)  # jsonファイルに秒数を保存
-#    return render_template('game.html')  # ここのreturnは適当
-
-
-#@app.route('/show')  # 画面7
-#def show():
-#    score_h = score.read_csv()
-#    return render_template('show.html', arr=score_h)
 
 # 画面7(スコア表示　タイトルに戻る　同じ難易度で遊ぶ)
 @app.route('/gameEnd', methods=["POST"])
