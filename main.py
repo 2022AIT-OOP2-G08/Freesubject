@@ -1,6 +1,4 @@
 #from crypt import methods
-from re import M
-
 from cv2 import split
 from flask import Flask, redirect, request, render_template, url_for, send_from_directory
 import glob  # ファイルの一覧を取得用に使用
