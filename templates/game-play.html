@@ -43,6 +43,13 @@
             </div>
             {% endfor %}
         </div>
+        <div class="hidden action">
+            <form id="clear" name="sentcleardata" method="POST" action="/game-clear">
+                <input type="hidden" id="img_Name" name="img_Name" value="{{ img_Name }}" >
+                <input type="hidden" name="rowcol" id="rowcol" value="{{ rowcol }}" >
+                <button id="submit" style="display: none;">done</button>
+            </form>
+        </div>
     </div>
 </body>
 </html>

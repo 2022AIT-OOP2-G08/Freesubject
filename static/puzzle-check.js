@@ -4,10 +4,8 @@
 
 
 
-//const rows=document.getElementById("rows").value;
-//const cols=document.getElementById("cols").value;
-const rows=3;
-const cols=3;
+const rows=document.getElementById("rowcol").value;
+const cols=document.getElementById("rowcol").value;
 const chunks = rows*cols;
 console.log("col: "+cols,"row: "+rows,"cunks: "+chunks)
 
@@ -84,6 +82,11 @@ function check(){
     return checkcount;
 }
 
+function FormSubmit(){
+    var target = document.getElementById("clear");
+    target.submit();
+}
+
 
 function correct_action(){
     //全ピースの座標及びその画像サイズを取得
@@ -97,7 +100,10 @@ function correct_action(){
     if (chunks==check()){
         console.log("正解")
         //次のページへ遷移する
-        window.location.href ='/game-clear'
+        document.getElementById("submit").click();
+        clearInterval( timer );
+    }else{
+        console.log("不正解")
     }
 }
 
