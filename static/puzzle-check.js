@@ -92,18 +92,16 @@ function correct_action(){
     //全ピースの座標及びその画像サイズを取得
     r=get_coordinate();
     for(var i=0; i<chunks; i++){
-        console.log(r[i].left, r[i].top, r[i].width, r[i].height);
+        //console.log(r[i].left, r[i].top, r[i].width, r[i].height);
     }
     //ピースの正答率
     console.log('正しいピース数',check()+"/"+chunks);
     //正解時のアクション
     if (chunks==check()){
-        console.log("正解")
+        //console.log("正解")
         //次のページへ遷移する
-        document.getElementById("submit").click();
         clearInterval( timer );
-    }else{
-        console.log("不正解")
+        document.getElementById("submit").click();
     }
 }
 
