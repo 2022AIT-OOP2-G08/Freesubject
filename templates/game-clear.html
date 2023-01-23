@@ -11,11 +11,14 @@
     <div class = "game-result">
         <p style="color: red;">Congratulations!</p>
         <div class="display-puzzle">
-            <img src="{{ path }}" alt="完成" width="400px" height="300px">
+            <img src="../static/images/process/{{ img_Name }}" alt="完成" width="400px" height="300px">
         </div>
     </div>
     <div class="btn-pos">
-        <button onclick="location.href='./game-play'" class="score-btn">スコア表示画面</button>
+        <form id="score" name="scoredata" method="POST" action="/gameEnd">
+            <input type="hidden" id="img_Name" name="img_Name" value="{{ img_Name }}" >
+            <button class="score-btn">スコア表示画面</button>
+        </form>
     </div>
 </body>
 </html>

@@ -4,10 +4,8 @@
 
 
 
-//const rows=document.getElementById("rows").value;
-//const cols=document.getElementById("cols").value;
-const rows=3;
-const cols=3;
+const rows=document.getElementById("rowcol").value;
+const cols=document.getElementById("rowcol").value;
 const chunks = rows*cols;
 console.log("col: "+cols,"row: "+rows,"cunks: "+chunks)
 
@@ -84,20 +82,26 @@ function check(){
     return checkcount;
 }
 
+function FormSubmit(){
+    var target = document.getElementById("clear");
+    target.submit();
+}
+
 
 function correct_action(){
     //全ピースの座標及びその画像サイズを取得
     r=get_coordinate();
     for(var i=0; i<chunks; i++){
-        console.log(r[i].left, r[i].top, r[i].width, r[i].height);
+        //console.log(r[i].left, r[i].top, r[i].width, r[i].height);
     }
     //ピースの正答率
     console.log('正しいピース数',check()+"/"+chunks);
     //正解時のアクション
     if (chunks==check()){
-        console.log("正解")
+        //console.log("正解")
         //次のページへ遷移する
-        window.location.href ='/game-clear'
+        clearInterval( timer );
+        document.getElementById("submit").click();
     }
 }
 

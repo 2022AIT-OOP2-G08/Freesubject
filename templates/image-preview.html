@@ -16,18 +16,22 @@
           case 0:
             //elem.src = "../static/images/process/gray_sample.png"
             elem.src = "../static/images/process/gray_" + img_Name.innerHTML;
+            document.getElementById("send-image").value="gray_" + img_Name.innerHTML;
             break;
           case 1:
             //elem.src = "../static/images/process/mosaic_sample.png"
             elem.src = "../static/images/process/mosaic_" + img_Name.innerHTML;
+            document.getElementById("send-image").value="mosaic_" + img_Name.innerHTML;
             break;
           case 2:
             //elem.src = "../static/images/process/inversion_sample.png"
             elem.src = "../static/images/process/inversion_" + img_Name.innerHTML;
+            document.getElementById("send-image").value="inversion_" + img_Name.innerHTML;
             break;
         }
       }
     </script>
+    <script src="{{url_for('static', filename='create.js')}}"></script>
   </head>
   <body>
     <main>
@@ -38,12 +42,23 @@
         <img id = "image01" src="{{ url_for('static', filename=img_Path)}}">
       </div>
       <div class="buttons">
-        <button id="grayscale" onclick="LinkClick(0)">グレースケール</button>
-        <button id="mosaic" onclick="LinkClick(1)">モザイク</button>
-        <button id="inversion" onclick="LinkClick(2)">色反転</button>
+        <button id="grayscale" onclick="LinkClick(0);Oncpuz()">グレースケール</button>
+        <button id="mosaic" onclick="LinkClick(1);Oncpuz()">モザイク</button>
+        <button id="inversion" onclick="LinkClick(2);Oncpuz()">色反転</button>
       </div>
       <div class="startbutton">
-        <button>ゲームスタート</button>
+        <form id="create" name="cpuzzle" method="POST" action="/game-play">
+          <text>縦 x 横</text>
+          <select id="rowcol" name="rowcol" onchange="Oncpuz()">
+              <option value="" selected disabled>選択してください</option>
+              <option value=2> 2 x 2 </option>
+              <option value=3> 3 x 3 </option>
+              <option value=4> 4 x 4 </option>
+              <option value=5> 5 x 5 </option>
+          </select>
+          <button id="create_puzzle" disabled='true'>done</button>
+          <input type="hidden" id="send-image" name="img_Name" value="" >
+      </form>
       </div>
     </main>
   </body>
