@@ -2,13 +2,20 @@
     text-align: center;
 }
 
-.game-result p{
+.clear-message{
+    font-family: 'Caveat', cursive;
     font-size: 36px;
     color: red;
 }
+
+.score-label{
+    font-size: 26px;
+}
+
 .display-puzzle{
     width: auto;
     height: auto;
+    padding: 10px;
     background-color: bisque;
 }
 .btn-pos{

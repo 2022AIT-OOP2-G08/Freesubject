@@ -4,8 +4,10 @@ from flask import Flask, redirect, request, render_template, url_for, send_from_
 import glob  # ファイルの一覧を取得用に使用
 import os  # パス操作用に使用
 import time
+import cv2
 import random
 import modules.processing as processing
+import ast
 
 from modules import score, timer, c_json
 
@@ -63,6 +65,8 @@ def page4():
 #画面5(パズルゲーム画面)
 @app.route('/game-play', methods=['POST'])
 def gameplay():
+    # アップロードされた画像を表示させる
+    app.config['FOLDER'] = 'static/images/process/'
     img_Name = ""
     rowcol=0
     if request.form.get('img_Name') is not None:
@@ -76,10 +80,36 @@ def gameplay():
         rowcol = "パラメーターがないよ"
     
     timer.start = time.time()  # スタート時間
-    
+    # 画像の分割処理
     processing.split_img(img_Name,rowcol,rowcol)
-    # アップロードされた画像を表示させる
-    app.config['FOLDER'] = 'static/images/process/'
+    
+    # パズルピースや完成図の大きさの設定
+    img_size=[{'width': "400",'height': "300"},{'width': "350",'height': "350"},{'width': "300",'height': "400"}]
+    peace_size=[]
+    for size in img_size:
+        width = int(size['width']) / rowcol
+        height = width * (int(size['height'])/int(size['width']))
+        peace_size.append(
+            {
+                'width': str(width),
+                'height': str(height)
+            }
+        )
+    img_type = None
+    img = cv2.imread(app.config['FOLDER'] + img_Name)
+    h, w, c = img.shape
+    
+    if(w > h+100):
+        img_type = 0
+    elif(h > w+100):
+        img_type = 2
+    else:
+        img_type = 1
+    
+    print("width:" + str(w)+" height:" + str(h) + " img_type:" + str(img_type))
+    print(img_size[img_type])
+    print(peace_size[img_type])
+    
     # file = glob.glob("static/images/normal/*.png")
     path = app.config['FOLDER'] + img_Name
     # print(file)
@@ -108,9 +138,9 @@ def gameplay():
     print(file_count)
     split_file_count = [file_count[idx:idx + rowcol] for idx in range(0,len(files), rowcol)]
     print(split_file_count)
-    
-    return render_template("game-play.html", file=paths, split_file_count=split_file_count, target_files=split_path,
-    rowcol=rowcol, img_Name=img_Name)
+    print("game-play:" + str(img_size[img_type]))
+    return render_template("game-play.html", file=paths, split_file_count=split_file_count, target_files=split_path, 
+                            rowcol=rowcol, img_Name=img_Name, img_size=img_size[img_type], peace_size=peace_size[img_type])
 
 #画面6(ゲームクリア画面)
 @app.route('/game-clear', methods=['POST'])
@@ -129,7 +159,10 @@ def gameclear():
         rowcol= request.form.get('rowcol', type=int)
     else:
         rowcol = "パラメーターがないよ"
-
+    if request.form.get('img_size') is not None:
+        img_size = request.form.get('img_size')
+    else:
+        img_size = "パラメータがないよ"
     imgmode,nomal = img_Name.split("_")
     
     mode_amp = score.mode_score(imgmode)
@@ -137,9 +170,14 @@ def gameclear():
     ##スコア計算・csvに上書き
     dict = {'size_amp': rowcol,"mode_amp": mode_amp,'time': sec}
     c_json.update_json(dict)  # jsonファイルに秒数を保存
-    score.calc_score(dict['size_amp'],dict['mode_amp'],dict['time'],score.read_csv())
+    score_total = score.calc_score(dict['size_amp'],dict['mode_amp'],dict['time'],score.read_csv())
     #path = processing.get_img_select_path('process')+img_Name
-    return render_template("game-clear.html", img_Name=img_Name)
+    # print(type(img_size))
+    # print("game-clear:" + img_size)
+    # print(type(ast.literal_eval(img_size)))
+    img_size = ast.literal_eval(img_size)
+    
+    return render_template("game-clear.html", img_Name=img_Name, score=score_total, img_size=img_size)
 
 @app.route('/images/uploaded/<path:filename>')
 def uploaded_file(filename):

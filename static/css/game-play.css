@@ -16,13 +16,14 @@ body{
 }
 
 .puzzle-dis1{
-    text-align: center;
-    flex-grow: 2;
+    display: table;
+    width: 100%;
+    flex-grow: 3;
 }
 
 .puzzle-dis2{
     background-color: whitesmoke;
-    flex-grow: 1;
+    flex-grow: 2;
 }
 .puzzle-dis2-sub1{
     text-align: right;
@@ -44,15 +45,15 @@ body{
 }
 
 
-.block{
+.peace{
     padding: 10px;
-    width: 100px;
-    height: 100px;
+    /* width: 100px;
+    height: 100px; */
 }
 
 td{
-    height: 100px; 
-    width: 100px; 
+    /* height: 100px; 
+    width: 100px;  */
     border: 2px solid rgb(115, 255, 155);
 }
 
@@ -65,4 +66,13 @@ table{
     height: 100%;
     margin: 0;
     vertical-align: middle;
+}
+
+.dragtarget:hover{
+    /* ボタンにカーソルが乗っかっている時に適用されるcss。 */
+    opacity: 0.6;
+}
+
+.dragpoint{
+    background-color: whitesmoke;
 }

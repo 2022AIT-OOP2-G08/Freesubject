@@ -2,15 +2,19 @@ var target = "";
 
 var dragid = document.getElementsByClassName('dragtarget');
 var dropbox = document.getElementsByClassName('dragpoint');
-var dropblock = document.getElementsByClassName('block');
+var dropblock = document.getElementsByClassName('peace');
 
 let startTime = 0, timer; // 開始時間、タイマー
-let gamestatus = "ready"; // ステータス（ready/start）
+// let gamestatus = "ready"; // ステータス（ready/start）
 
 document.getElementById("time").innerText = "--.--";
 // カウントダウン開始
+// startTime = Date.now();
+// timer = setInterval(countdown, 20);
+setUp()
+// スタート
 startTime = Date.now();
-timer = setInterval(countdown, 20);
+timer = setInterval(update, 20);
 
 function countdown(){
     // カウントダウン
@@ -30,9 +34,9 @@ function countdown(){
 function update(){
     // タイムの表示
     let time = ((Date.now() - startTime) / 1000).toFixed(2);
-    if ((gamestatus == "start") && (time < 1)) setUp();
+    // if ((gamestatus == "start") && (time < 1)) setUp();
     time = ("0" + time).slice(-5);
-    if (gamestatus == "ready") time = "--.--";
+    // if (gamestatus == "ready") time = "--.--";
     drawText(time);
 }
 
@@ -79,12 +83,6 @@ function setUp(){
                 }
             }
             correct_action();
-            // 終了判定
-            // if(count === dropbox.length){
-            //     // 画面遷移
-            // clearInterval(update)
-            //     window.location.href = 'http://127.0.0.1:5000';
-            // }
         }, false);
     }
     
@@ -99,7 +97,7 @@ function setUp(){
         });
         dropblock[i].addEventListener('drop', function(element){
             element.preventDefault();
-            if(element.target.className == "block" && element.target.innerHTML.trim()==""){
+            if(element.target.className == "peace" && element.target.innerHTML.trim()==""){
                 target.parentNode.removeChild(target);
                 element.target.appendChild(target);
             }
