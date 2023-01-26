@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="static/css/game-play.css">
     <script defer src="{{ url_for('static', filename='game-play.js') }}"></script>
     <script defer src="{{ url_for('static', filename='puzzle-check.js') }}"></script>
+    <script>
+        history.pushState(null, null, null);
+        window.addEventListener("popstate", function (e) {
+            history.pushState(null, null, null);
+            return;
+        });
+    </script>
     <title>ゲームプレイ画面</title>
 </head>
 <body>
@@ -14,31 +21,35 @@
         <div class="puzzle-dis">
                 <div class="puzzle-dis1">
                     <!-- <canvas style="border: 4px solid rgb(115, 255, 155); width: 400px; height:300px; top: 50px"></canvas> -->
-                    <table cellpadding="0" cellspacing="0">
-                        <tbody>
-                            {% for file_count in split_file_count%}
-                            <tr>
-                                {% for file in file_count%}
-                                <td id = "{{file}}" class="dragpoint"></td>
-                                {% endfor %}
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
+                    <div style="vertical-align: middle;display: table-cell; text-align: center;">
+                        <div style="display: inline-block;">
+                            <table cellpadding="0" cellspacing="0">
+                                <tbody>
+                                    {% for file_count in split_file_count%}
+                                    <tr>
+                                        {% for file in file_count%}
+                                        <td id = "{{file}}" class="dragpoint" style="width: {{ peace_size['width'] }}px; height: {{ peace_size['height'] }}px"></td>
+                                        {% endfor %}
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             <div class="puzzle-dis2">
                 <div class="puzzle-dis2-sub1">
                     Time: <span id="time">--.--</span>
                 </div>
                 <div class="puzzle-dis2-sub2">
-                    <img  src="{{ file['url'] }}" alt="{{ file['filename'] }}" width="400px" height="300px" style="margin: 0%;">
+                    <img  src="{{ file['url'] }}" alt="{{ file['filename'] }}" width="{{ img_size['width'] }}px" height="{{ img_size['height'] }}px" style="margin: 20px;">
                 </div>
             </div>
         </div>
-        <div class = "puzzle-pos" style="height: 250px;">
+        <div class = "puzzle-pos" style="height: 300px;">
             
             {% for file in target_files %}
-            <div class="block" >
+            <div class="peace" style="width: {{ peace_size['width'] }}px; height: {{ peace_size['height'] }}px">
                 <img id="{{ file['id'] }}" class="dragtarget" src="{{ file['url'] }}" alt="{{ file['filename'] }}">
             </div>
             {% endfor %}
@@ -47,6 +58,7 @@
             <form id="clear" name="sentcleardata" method="POST" action="/game-clear">
                 <input type="hidden" id="img_Name" name="img_Name" value="{{ img_Name }}" >
                 <input type="hidden" name="rowcol" id="rowcol" value="{{ rowcol }}" >
+                <input type="hidden" name="img_size" id="img_size" value="{{ img_size }}" >
                 <button id="submit" style="display: none;">done</button>
             </form>
         </div>

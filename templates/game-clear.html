@@ -5,19 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="static/css/game-clear.css">
+    <link rel="stylesheet" href="static/css/button-design.css">
+    <script>
+        history.pushState(null, null, null);
+        window.addEventListener("popstate", function (e) {
+            history.pushState(null, null, null);
+            return;
+        });
+    </script>
     <title>ゲーム終了画面</title>
 </head>
-<body>
+<body onload="document.scoredata.scorebtn.focus()">
     <div class = "game-result">
-        <p style="color: red;">Congratulations!</p>
+        <p class="clear-message">Congratulations!</p>
+        <div>
+            <p class="score-label">Score : <span style="font-size: 40px; font-weight: bold;">{{score}}</span> Pt</p>
+        </div>
         <div class="display-puzzle">
-            <img src="../static/images/process/{{ img_Name }}" alt="完成" width="400px" height="300px">
+            <img src="../static/images/process/{{ img_Name }}" alt="完成" width="{{ img_size['width'] }}px" height="{{ img_size['height'] }}px" >
         </div>
     </div>
     <div class="btn-pos">
         <form id="score" name="scoredata" method="POST" action="/gameEnd">
             <input type="hidden" id="img_Name" name="img_Name" value="{{ img_Name }}" >
-            <button class="score-btn">スコア表示画面</button>
+            <button id="button" class="score-btn" name="scorebtn">スコア表示画面</button>
         </form>
     </div>
 </body>

@@ -36,7 +36,10 @@
   <body>
     <main>
       <div id="imgName" style="display: none;">{{img_Name}}</div>
-      <button onclick="javascript:window.history.back(-1);return false;">戻る</button>
+      <!-- ブラウザバック処理
+      <button onclick="javascript:window.history.back(-1);return false;">戻る</button> -->
+      <!-- 画像選択画面に戻る処理 -->
+      <button onclick="location.href='./upload'">戻る</button>
       <h1>難易度を選択</h1>
       <div class="image">
         <img id = "image01" src="{{ url_for('static', filename=img_Path)}}">
