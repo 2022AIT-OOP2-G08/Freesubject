@@ -6,6 +6,33 @@
     <link rel="stylesheet" href="../static/css/image-preview.css">
     <title>難易度選択</title>
     <script type="text/javascript">
+      (function(){
+        function image_class(){
+          var img = document.getElementById('image01');
+          
+          if(img.width < img.height){
+            img.className += 'vertically_long';
+            img.parentNode.className += '_vertically_long_outer';
+          }else if(img.width > img.height){
+            img.className += ' horizontally_long';
+            img.parentNode.className += '_horizontally_long_outer';
+          }else{
+            img.className += ' square';
+            img.parentNode.className += ' square_outer';
+          }
+
+          const img_Name =  document.getElementById("imgName");
+          document.getElementById('send-image').value = "normal_" + img_Name.innerHTML
+        }
+
+        if(window.addEventListener){
+          window.addEventListener('load', image_class, false);
+        }
+        else if(window.attachEvent){
+          window.attachEvent('onload', image_class);
+        }
+      })();
+
       function LinkClick(param) {
         
         var elem = document.getElementById("image01");
@@ -28,6 +55,11 @@
             elem.src = "../static/images/process/inversion_" + img_Name.innerHTML;
             document.getElementById("send-image").value="inversion_" + img_Name.innerHTML;
             break;
+          case 3:
+            //elem.src = "../static/images/process/inversion_sample.png"
+            elem.src = "../static/images/process/normal_" + img_Name.innerHTML;
+            document.getElementById("send-image").value="normal_" + img_Name.innerHTML;
+            break;
         }
       }
     </script>
@@ -39,15 +71,20 @@
       <!-- ブラウザバック処理
       <button onclick="javascript:window.history.back(-1);return false;">戻る</button> -->
       <!-- 画像選択画面に戻る処理 -->
-      <button onclick="location.href='./upload'">戻る</button>
-      <h1>難易度を選択</h1>
+      <div class="return">
+        <button id="back_selectImg" onclick="location.href='./upload'">画像選択に戻る</button>
+      </div>
+      <h1>難易度選択</h1>
       <div class="image">
-        <img id = "image01" src="{{ url_for('static', filename=img_Path)}}">
+        <div class="background">
+          <img id = "image01" src="{{ url_for('static', filename=img_Path)}}">
+        </div>
       </div>
       <div class="buttons">
         <button id="grayscale" onclick="LinkClick(0);Oncpuz()">グレースケール</button>
         <button id="mosaic" onclick="LinkClick(1);Oncpuz()">モザイク</button>
         <button id="inversion" onclick="LinkClick(2);Oncpuz()">色反転</button>
+        <button id="normal" onclick="LinkClick(3);Oncpuz()">無加工</button>
       </div>
       <div class="startbutton">
         <form id="create" name="cpuzzle" method="POST" action="/game-play">
@@ -59,10 +96,12 @@
               <option value=4> 4 x 4 </option>
               <option value=5> 5 x 5 </option>
           </select>
-          <button id="create_puzzle" disabled='true'>done</button>
+          <button id="create_puzzle" disabled='true'>ゲームスタート</button>
           <input type="hidden" id="send-image" name="img_Name" value="" >
-      </form>
+          
+        </form>
       </div>
+      
     </main>
   </body>
 </html>
