@@ -1,4 +1,4 @@
-h2{
+h1{
     text-align: center;
 }
 
@@ -52,7 +52,6 @@ input[type="radio"]:checked + label{
 /* ファイル追加系 */
 #open_file{
     display: inline-block;
-    width: 30%;
     height: 25%;
     margin: 0% 0% 0% 0% ;
 }
@@ -60,7 +59,7 @@ input[type="radio"]:checked + label{
 #add_button{
     display: inline-block;
     margin: 0% 0% 0% 0% ;
-    background-color: skyblue;
+    background-color: rgb(92, 208, 253);
     border-radius: 10px;
     border-color: rgb(67, 67, 67);
     padding-left: 15px;
@@ -79,10 +78,14 @@ input[type="radio"]:checked + label{
 #add_image{
     display: inline-block;
     margin: 0% 0% 0% 0% ;
-    background-color: skyblue;
+    background-color: rgb(92, 208, 253);
     border: 1px solid rgb(67, 67, 67);
     color: white;
     text-align: center;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 2px;
+    padding-right: 2px;
 }
 /* ファイル追加系 */
 
@@ -90,16 +93,15 @@ input[type="radio"]:checked + label{
 /* 決定ボタン系 */
 #decide_image{
     display: inline-block;
-    width: 10%;
+    width: 7%;
     height: 25%;
-    margin: 0% 0% 0% 5% ;
+    margin: 0% 1.5% 0% 0% ;
     
 }
-
 #decide_button{
     display: inline-block;
     width: 100%;
-    background-color: skyblue;
+    background-color: rgb(92, 208, 253);
     border-radius: 10px;
     border-color: rgb(67, 67, 67);
     padding-left: 25px;
