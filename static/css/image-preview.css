@@ -1,29 +1,150 @@
+/* タイトル */
+h1{
+    text-align: center;
+}
+/* タイトル */
+
+
+/* プレビュー画像部分 */
+.image{
+    width: 80%;
+    height: 20%;
+    text-align: center;
+    margin: 0 auto;
+    /* padding-top: 1%; */
+    padding-bottom: 2%;
+}
+.background_vertically_long_outer{
+    max-width: 20%;
+    max-height: 20%;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-right: 2%;
+    padding-left: 2%;
+    border: 2px solid black; 
+    background: beige;
+    
+}
+.vertically_long {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.background_horizontally_long_outer{
+    max-width: 40%;
+    max-height: 40%;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-right: 2%;
+    padding-left: 2%;
+    border: 2px solid black; 
+    background: beige;
+}
+.horizontally_long{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+/* プレビュー画像部分 */
+
+
+/* 画像処理ボタン系 */
 .buttons{
     display: flex;
     justify-content: space-evenly;
-    position: relative;
-    top: 100px;
+    padding-bottom: 2%;
 }
-
-.image{
-    width: 500px;
-    height: auto;
+.buttons button{
+    width: 11%;
+    font-size: 110%;
+    background-color: rgb(92, 208, 253);
+    border-radius: 10px;
+    border-color: rgb(67, 67, 67);
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
     text-align: center;
-    margin: 0 auto;
 }
-.image img {
-    width: 50%;
-    height: 50%;
-    border: 1px solid #333;
+.buttons button:disabled{
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: black;
 }
-html {
-    background-color: #00539F;
+.buttons button:hover{
+    opacity: 0.6;
+}
+/* 画像処理ボタン系 */
+
+
+/* 分割数&スタートボタン系 */
+#create{
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    padding-right: 2%;
+    padding-left: 2%;
+    border: 2px solid black; 
 }
 .startbutton{
     display: flex;
     justify-content: space-evenly;
-    position: relative;
-    top: 200px;
 }
+#rowcol{
+    padding-top: 7px;
+    padding-bottom: 7px;
+    margin-right: 3px;
+}
+#create_puzzle{
+    background-color: rgb(92, 208, 253);
+    border-radius: 10px;
+    border-color: rgb(67, 67, 67);
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    color: white;
+    text-align: center;
+}
+#create_puzzle:disabled{
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: black;
+}
+#create_puzzle:hover{
+    opacity: 0.6;
+}
+/* 分割数&スタートボタン系 */
 
 
+/* 戻るボタン */
+.return{
+    padding-top: 0.5%;
+    /* padding-bottom: 2%;  */
+}
+#back_selectImg{
+    font-size: 110%;
+    background-color: rgb(92, 208, 253);
+    border-radius: 10px;
+    border-color: rgb(67, 67, 67);
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    margin-left: 2%;
+    color: white;
+    text-align: center;
+}
+#back_selectImg:disabled{
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: black;
+}
+#back_selectImg:hover{
+    opacity: 0.6;
+}
+/* 戻るボタン */
