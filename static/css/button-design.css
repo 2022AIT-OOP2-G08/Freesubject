@@ -5,7 +5,7 @@
 #button{
     /* 基本となるcss。大きさ等のcssは入っていないので自分でつけてください */
     /* padding系をこのままつけると逆に変になってしまうことがあると思うので各自変更してください */
-    background-color: skyblue;
+    background-color: rgb(92, 208, 253);
     border-radius: 10px;
     border-color: rgb(67, 67, 67);
     padding-left: 25px;

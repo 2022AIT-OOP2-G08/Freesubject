@@ -30,6 +30,14 @@ def get_img_select_path(imgtype):
     name = get_images_path()+imgtype+'/'
     return name
 
+#元の画像をprocessに保存
+def normal(input): 
+    img = get_img_select_path('normal')+input
+    img_bgr = cv2.imread(img)
+    # img_gray = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2GRAY)
+    # cv2.imshow('gray_img',img_gray)
+    cv2.imwrite(get_img_select_path('process') + '/normal_' + input,img_bgr)
+
 #画像処理関数
 def gray_scale(input): #グレースケール化
     img = get_img_select_path('normal')+input

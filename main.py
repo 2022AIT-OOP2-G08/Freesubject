@@ -53,6 +53,7 @@ def page4():
 
     if request.form.get('img_Name') is not None:
         img_Name = request.form.get('img_Name')
+        processing.normal(img_Name)
         processing.gray_scale(img_Name)
         processing.mosaic(img_Name)
         processing.inversion(img_Name)
@@ -163,9 +164,9 @@ def gameclear():
         img_size = request.form.get('img_size')
     else:
         img_size = "パラメータがないよ"
-    imgmode,nomal = img_Name.split("_")
-    
-    mode_amp = score.mode_score(imgmode)
+    # imgmode,nomal = img_Name.split("_")
+    imgmode = img_Name.split("_")
+    mode_amp = score.mode_score(imgmode[0])
     
     ##スコア計算・csvに上書き
     dict = {'size_amp': rowcol,"mode_amp": mode_amp,'time': sec}
@@ -197,9 +198,16 @@ def gameEnd():
     else:
         img_Name = "パラメーターがないよ"
 
-    img_normal = img_Name.split('_')
+    img_split = img_Name.split('_')
+    img_normal = ""
+    for n in range(len(img_split)):
+        if(n > 0):
+            img_normal += img_split[n]
+            if(n < int(len(img_split))-1):
+                img_normal += "_"
+
     score_array = score.read_csv()
-    return render_template("game-end.html", score_array=score_array, img_Name=img_normal[1])
+    return render_template("game-end.html", score_array=score_array, img_Name=img_normal)
 
 
 if __name__ == "__main__":
