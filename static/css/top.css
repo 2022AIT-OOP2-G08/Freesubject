@@ -1,0 +1,39 @@
+@font-face {
+	font-family: 'titleFont';
+	src: url(../../font/Corporate-Logo-Bold-ver3.otf);
+}
+
+.conicrenga{
+    min-height: 100vh;
+    font: 120% bold;
+    padding: 0.6em;
+    background: conic-gradient(at 5% 95%,#ccaaaa 90deg,transparent 90deg) 0px 0px/40px 40px
+                ,#eeeeee;
+}
+
+h1{
+    font-family: "Hiragino Maru Gothic ProN W4";
+    /* font-family: titleFont; */
+    font-size: 700%;
+    text-align: center;
+    margin: 15%;
+}
+
+#startButton{
+    display: block;
+    margin: auto;
+    background-color: rgb(92, 208, 253);
+    border-radius: 10px;
+    border-color: rgb(67, 67, 67);
+    padding-left: 6%;
+    padding-right: 6%;
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+    color: white;
+    text-align: center;
+    font-size: 230%;
+}
+
+#startButton:hover{
+    opacity: 0.6;
+}
