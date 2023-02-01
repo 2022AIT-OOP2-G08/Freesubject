@@ -21,7 +21,7 @@ app.config["JSON_AS_ASCII"] = False  # 日本語などのASCII以外の文字列
 @app.route('/')
 def index():
     # テスト用トップページを表示させる
-    return render_template("testTopPage.html")
+    return render_template("top.html")
 
 # 画面2(画像選択、画像追加)
 @app.route('/upload', methods=['GET', 'POST'])
