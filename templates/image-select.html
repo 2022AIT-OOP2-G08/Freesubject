@@ -16,7 +16,7 @@
           <button class="btn" id="decide_button" disabled="true">決　定</button>
         </form>
 
-        <form action="{{url_for('upload')}}" method="POST" enctype="multipart/form-data" id="open_file" name="add">
+        <form action="{{url_for('select')}}" method="POST" enctype="multipart/form-data" id="open_file" name="add">
           <button class="btn" id="add_button" type="submit" disabled="true">画像を追加</button>
           <input id="add_image" type="file" accept=".jpeg,.jpg,.png" name="image_file" onchange="onAddButton()">
         </form>
