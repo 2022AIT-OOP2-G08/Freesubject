@@ -45,8 +45,8 @@ def upload():
         return redirect(url_for('upload'))  # /uploadを再ロード
 
 #画面4(画像加工)
-@app.route('/page4', methods=["POST"])
-def page4():
+@app.route('/preview', methods=["POST"])
+def preview():
     processing.del_process()
     processing.del_split()
     img_Name = ""
@@ -190,7 +190,7 @@ def split_file(filename):
 
 
 # 画面7(スコア表示　タイトルに戻る　同じ難易度で遊ぶ)
-@app.route('/gameEnd', methods=["POST"])
+@app.route('/game-end', methods=["POST"])
 def gameEnd():
     img_Name=""
     if request.form.get('img_Name') is not None:
