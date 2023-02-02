@@ -166,6 +166,7 @@ def gameclear():
         img_size = "パラメータがないよ"
     # imgmode,nomal = img_Name.split("_")
     imgmode = img_Name.split("_")
+    print(imgmode)
     mode_amp = score.mode_score(imgmode[0])
     
     ##スコア計算・csvに上書き
