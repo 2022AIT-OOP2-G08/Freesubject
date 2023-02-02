@@ -35,8 +35,11 @@ function update(){
     // タイムの表示
     let time = ((Date.now() - startTime) / 1000).toFixed(2);
     // if ((gamestatus == "start") && (time < 1)) setUp();
-    time = ("0" + time).slice(-5);
+    if (time < 10) {
+        time = ("0" + time).slice(-5);
+    }
     // if (gamestatus == "ready") time = "--.--";
+    console.log(time);
     drawText(time);
 }
 
